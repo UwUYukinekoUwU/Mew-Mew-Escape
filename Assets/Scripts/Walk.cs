@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 
@@ -7,23 +8,25 @@ public class Walk : MonoBehaviour
     [SerializeField]
     private BoxCollider2D _hitbox;
 
+
     private float _verticalInput;
     private float _horizontalInput;
 
-
+    private InputController _controller;
     private Vector2 _direction;
     private ContactFilter2D triggerCollidersFilter = new ContactFilter2D();
 
     void Start()
     {
+        _controller = GetComponent<ControllerHolder>().input;
         _hitbox = GetComponent<BoxCollider2D>();
         triggerCollidersFilter.useTriggers = false;
     }
 
     public void Update()
     {
-        _horizontalInput = Input.GetAxis("Horizontal");
-        _verticalInput = Input.GetAxis("Vertical");
+        _horizontalInput = _controller.GetHorizontalInput();
+        _verticalInput = _controller.GetVerticalInput();
 
         Move();
     }

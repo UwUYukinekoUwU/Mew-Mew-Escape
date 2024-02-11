@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 282872728}
   - component: {fileID: 282872734}
   - component: {fileID: 282872735}
+  - component: {fileID: 282872731}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -224,6 +225,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &282872731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282872727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d22948e43f881c49b4828715b62465c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 11400000, guid: 19aaabe9fba664a468c1aa6a72b93c26, type: 2}
 --- !u!114 &282872732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,6 +308,10 @@ GameObject:
   - component: {fileID: 444825630}
   - component: {fileID: 444825629}
   - component: {fileID: 444825628}
+  - component: {fileID: 444825632}
+  - component: {fileID: 444825631}
+  - component: {fileID: 444825633}
+  - component: {fileID: 444825634}
   m_Layer: 0
   m_Name: HidingBox (1)
   m_TagString: HidingBox
@@ -392,6 +410,68 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &444825631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444825627}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc1eae7b45c36d7498fae00aee589eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Duration: 15
+  player: {fileID: 282872727}
+--- !u!114 &444825632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444825627}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e6aaad746f00ca48801f77697996b9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 7
+  _hitbox: {fileID: 444825628}
+--- !u!114 &444825633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444825627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d22948e43f881c49b4828715b62465c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 11400000, guid: 19aaabe9fba664a468c1aa6a72b93c26, type: 2}
+--- !u!50 &444825634
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444825627}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,6 +648,9 @@ GameObject:
   - component: {fileID: 1151908139}
   - component: {fileID: 1151908138}
   - component: {fileID: 1151908140}
+  - component: {fileID: 1151908141}
+  - component: {fileID: 1151908142}
+  - component: {fileID: 1151908143}
   m_Layer: 0
   m_Name: HidingBox
   m_TagString: HidingBox
@@ -666,6 +749,47 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1151908141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1151908137}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e6aaad746f00ca48801f77697996b9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 7
+  _hitbox: {fileID: 1151908140}
+--- !u!114 &1151908142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1151908137}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc1eae7b45c36d7498fae00aee589eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Duration: 15
+  player: {fileID: 282872727}
+--- !u!114 &1151908143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1151908137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d22948e43f881c49b4828715b62465c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 11400000, guid: 19aaabe9fba664a468c1aa6a72b93c26, type: 2}
 --- !u!1 &1929182461
 GameObject:
   m_ObjectHideFlags: 0
