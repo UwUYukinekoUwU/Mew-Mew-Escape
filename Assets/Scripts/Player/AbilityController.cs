@@ -1,18 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
+using static System.Collections.Specialized.BitVector32;
 
 public class AbilityController : MonoBehaviour
 {
-    private HidingBoxCheck hidingBox;
+    private TransformationCheck transformItem;
     private PlayerController _controller;
     private bool interacting = false;
 
+    private Dictionary<string, Action> transformOptions = new Dictionary<string, Action>();
+
+
     public void Start()
     {
-        hidingBox = GetComponentInChildren<HidingBoxCheck>();
-        _controller = GetComponent<ControllerHolder>().input as PlayerController;
+        transformItem = GetComponentInChildren<TransformationCheck>();
+        _controller = GetComponent<Controlls>().input as PlayerController;
+
+        transformOptions["HidingBox"] = BoxTransform;
+        transformOptions["Skateboard"] = SkateTransform;
     }
 
     public void Update()
@@ -22,8 +30,12 @@ public class AbilityController : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (interacting && hidingBox.InRange)
-            BoxTransform();
+        if (interacting && transformItem.InRange)
+        {
+            string tag = transformItem.GetClosestTransform().tag;
+            transformOptions[tag]();
+        }
+
         interacting = false;
     }
 
@@ -31,8 +43,15 @@ public class AbilityController : MonoBehaviour
     private void BoxTransform()
     {
         gameObject.SetActive(false);
-        hidingBox.GetClosestBox().SetActive(true);
-        hidingBox.GetClosestBox().GetComponent<Walk>().enabled = true;
-        hidingBox.GetClosestBox().GetComponent<HidingBox>().enabled = true;
+        transformItem.GetClosestTransform().SetActive(true);
+        transformItem.GetClosestTransform().GetComponent<Walk>().enabled = true;
+        transformItem.GetClosestTransform().GetComponent<HidingBox>().enabled = true;
+    }
+
+
+    private void SkateTransform()
+    {
+        gameObject.SetActive(false);
+        transformItem.GetClosestTransform().GetComponent<Skate>().enabled = true;
     }
 }

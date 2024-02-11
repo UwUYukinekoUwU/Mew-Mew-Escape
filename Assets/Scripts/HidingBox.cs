@@ -13,7 +13,7 @@ public class HidingBox : MonoBehaviour
 
     public void Start()
     {
-        _controller = GetComponent<ControllerHolder>().input as PlayerController;
+        _controller = GetComponent<Controlls>().input as PlayerController;
     }
 
     public void Update()

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - HidingBox
+  - Skateboard
   layers:
   - Default
   - TransparentFX

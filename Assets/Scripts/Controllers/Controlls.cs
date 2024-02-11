@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class ControllerHolder : MonoBehaviour
+public class Controlls : MonoBehaviour
 {
     public InputController input = null;
 }
