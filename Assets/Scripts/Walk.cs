@@ -11,8 +11,8 @@ public class Walk : MonoBehaviour
 
     protected float verticalInput;
     protected float horizontalInput;
+    protected InputController _controller;
 
-    private InputController _controller;
     private Vector2 _direction;
     private ContactFilter2D triggerCollidersFilter = new ContactFilter2D();
 
