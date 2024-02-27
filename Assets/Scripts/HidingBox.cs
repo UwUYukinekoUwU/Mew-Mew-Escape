@@ -14,6 +14,8 @@ public class HidingBox : MonoBehaviour
     public void Start()
     {
         _controller = GetComponent<Controlls>().input as PlayerController;
+        Rigidbody2D _rb = GetComponent<Rigidbody2D>();
+        _rb.constraints &= ~RigidbodyConstraints2D.FreezePosition;
     }
 
     public void Update()

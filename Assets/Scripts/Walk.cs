@@ -46,7 +46,8 @@ public class Walk : MonoBehaviour
             foreach (RaycastHit2D r in _results)
             {
                 if (r == false) break;
-                horizontalInput = 0;
+                horizontalInput = Mathf.Sign(horizontalInput) * (r.distance - 0.01f);
+                break;
             }
         }
 
@@ -57,7 +58,8 @@ public class Walk : MonoBehaviour
             foreach (RaycastHit2D r in _results)
             {
                 if (r == false) break;
-                verticalInput = 0;
+                verticalInput = Mathf.Sign(verticalInput) * (r.distance - 0.01f);
+                break;
             }
         }
 

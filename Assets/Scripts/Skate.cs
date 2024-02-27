@@ -4,32 +4,30 @@ using UnityEngine;
 
 public class Skate : Walk
 {
-    private PlayerController _player_controller;
-
+    private PlayerController _playerController;
 
     public new void Start()
     {
         base.Start();
-        _player_controller = base._controller as PlayerController;
+        _playerController = base._controller as PlayerController;
     }
 
     public new void Update()
     {
-        float current_vertical = _player_controller.GetVerticalInput();
-        if (current_vertical != 0f)
+        float current_vertical = _playerController.GetVerticalInput();
+        float current_horizontal = _playerController.GetHorizontalInput();
+
+        if (current_vertical != 0)
         {
-            horizontalInput = 0f;
             verticalInput = current_vertical;
+            horizontalInput = 0;
         }
 
-
-        float current_horizontal = _player_controller.GetHorizontalInput();
-        if (current_horizontal != 0f)
+        if (current_horizontal != 0)
         {
-            verticalInput = 0f;
             horizontalInput = current_horizontal;
+            verticalInput = 0;
         }
-
 
         Move();
     }
