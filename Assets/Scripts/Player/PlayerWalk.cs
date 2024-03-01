@@ -12,9 +12,20 @@ public class PlayerWalk : Walk
     public new void Update()
     {
         base.Update();
-        if (horizontalInput != 0 || verticalInput != 0)
-            _handler._Running = true;
+        if (horizontalInput != 0)
+            _handler._RunningSideways = true;
+        else 
+            _handler._RunningSideways = false;
+
+        if (verticalInput > 0)
+            _handler._RunningUpwards = true;
+        else 
+            _handler._RunningUpwards = false;
+
+        if (verticalInput < 0)
+            _handler._RunningDownwards = true;
         else
-            _handler._Running = false;
+            _handler._RunningDownwards = false;
+
     }
 }

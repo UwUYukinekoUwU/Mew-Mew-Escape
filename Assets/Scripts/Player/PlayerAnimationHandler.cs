@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAnimationHandler : MonoBehaviour
@@ -7,7 +8,9 @@ public class PlayerAnimationHandler : MonoBehaviour
     private float lockedTill;
 
     private static readonly int Idle = Animator.StringToHash("Idle");
-    private static readonly int Running = Animator.StringToHash("Run");
+    private static readonly int RunningSideways = Animator.StringToHash("RunSideways");
+    private static readonly int RunningUpwards = Animator.StringToHash("RunUpwards");
+    private static readonly int RunningDownwards = Animator.StringToHash("RunDownwards");
     //private static readonly int Jump = Animator.StringToHash("Jump");
     //private static readonly int Normal_attack = Animator.StringToHash("Normal_attack");
 
@@ -15,7 +18,18 @@ public class PlayerAnimationHandler : MonoBehaviour
 
     //[HideInInspector] public bool _Attacking;
     //[HideInInspector] public bool _Jumping;
-    [HideInInspector] public bool _Running;
+    [HideInInspector] public bool _RunningSideways;
+    [HideInInspector] public bool _RunningUpwards;
+    [HideInInspector] public bool _RunningDownwards;
+
+
+    private Dictionary<int, float> transitionDurations = new Dictionary<int, float>()
+    { 
+        { Idle, 0.5f },
+        { RunningSideways, 0f },
+        { RunningUpwards, 0f },
+        { RunningDownwards, 0f }
+    };
 
 
     public void Update()
@@ -23,7 +37,8 @@ public class PlayerAnimationHandler : MonoBehaviour
         int state = GetState();
 
         if (state == currentState) return;
-        _anim.CrossFade(state, 0.7f, 0);
+        Debug.Log(transitionDurations[state]);
+        _anim.CrossFade(state, transitionDurations[state], 0);
         currentState = state;
     }
 
@@ -42,7 +57,9 @@ public class PlayerAnimationHandler : MonoBehaviour
 
         //if (_Attacking) return LockState(Normal_attack, attackAnimDuration);
         //if (_Jumping) return Jump;
-        if (_Running) return Running;
+        if (_RunningSideways) return RunningSideways;
+        if (_RunningUpwards) return RunningUpwards;
+        if (_RunningDownwards) return RunningDownwards;
         return Idle;
 
         int LockState(int s, float t)

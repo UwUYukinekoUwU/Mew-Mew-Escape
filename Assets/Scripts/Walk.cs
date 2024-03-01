@@ -28,6 +28,15 @@ public class Walk : MonoBehaviour
         horizontalInput = _controller.GetHorizontalInput();
         verticalInput = _controller.GetVerticalInput();
 
+        // flip the sprite of the object
+        if (horizontalInput != 0)
+            transform.localScale = new Vector3(
+                Mathf.Sign(horizontalInput) * Mathf.Abs(transform.localScale.x) * -1,
+                transform.localScale.y,
+                transform.localScale.z
+            );
+
+
         Move();
     }
 
