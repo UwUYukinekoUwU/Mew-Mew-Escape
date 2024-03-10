@@ -23,6 +23,28 @@ public class PlayerController : InputController
         return Input.GetKeyDown(KeyCode.V);
     }
 
+    public bool SkipDialogue()
+    {
+        return Input.GetKeyDown(KeyCode.C);
+    }
+
+    public bool LeftArrow()
+    {
+        return Input.GetKeyDown(KeyCode.LeftArrow);
+    }
+    public bool RightArrow()
+    {
+        return Input.GetKeyDown(KeyCode.RightArrow);
+    }
+    public bool UpArrow()
+    {
+        return Input.GetKeyDown(KeyCode.UpArrow);
+    }
+    public bool DownArrow()
+    {
+        return Input.GetKeyDown(KeyCode.DownArrow);
+    }
+
 }
 
 

@@ -9,12 +9,14 @@ public class TransformationCheck : MonoBehaviour
 
     private GameObject closestTransform;
     private Transform player;
+    private PlayerWalk playerWalk;
     private string[] transformOptions = { "HidingBox", "Skateboard" };
     private int currentlyInRange = 0;
 
     public void Start()
     {
-        player = GetComponent<Transform>();                                                                                                  
+        player = GetComponent<Transform>();      
+        playerWalk = GetComponentInParent<PlayerWalk>();
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -44,7 +46,6 @@ public class TransformationCheck : MonoBehaviour
     {
         if (!isOption(collision.gameObject.tag))
             return;
-
 
         if (collision.gameObject == closestTransform)
             return;

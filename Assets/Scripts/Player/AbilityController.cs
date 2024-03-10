@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
-using static System.Collections.Specialized.BitVector32;
+using static GameM;
 
 public class AbilityController : MonoBehaviour
 {
@@ -30,7 +30,7 @@ public class AbilityController : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (interacting && transformItem.InRange)
+        if (interacting && transformItem.InRange && !Game.PlayerBusy)
         {
             string tag = transformItem.GetClosestTransform().tag;
             transformOptions[tag]();

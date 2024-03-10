@@ -25,7 +25,7 @@ public class PlayerAnimationHandler : MonoBehaviour
 
     private Dictionary<int, float> transitionDurations = new Dictionary<int, float>()
     { 
-        { Idle, 0.5f },
+        { Idle, 0.2f },
         { RunningSideways, 0f },
         { RunningUpwards, 0f },
         { RunningDownwards, 0f }
@@ -37,7 +37,6 @@ public class PlayerAnimationHandler : MonoBehaviour
         int state = GetState();
 
         if (state == currentState) return;
-        Debug.Log(transitionDurations[state]);
         _anim.CrossFade(state, transitionDurations[state], 0);
         currentState = state;
     }

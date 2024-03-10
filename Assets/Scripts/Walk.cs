@@ -31,7 +31,7 @@ public class Walk : MonoBehaviour
         // flip the sprite of the object
         if (horizontalInput != 0)
             transform.localScale = new Vector3(
-                Mathf.Sign(horizontalInput) * Mathf.Abs(transform.localScale.x) * -1,
+                Mathf.Sign(horizontalInput) * Mathf.Abs(transform.localScale.x),
                 transform.localScale.y,
                 transform.localScale.z
             );
