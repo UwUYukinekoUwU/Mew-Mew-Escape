@@ -54,7 +54,7 @@ namespace DialogueSystem
             Debug.Log("Talking range reenabled");
             talkingRange.enabled = true;
 
-            // don't want to make the player interact immediately,
+            // don't want to make the player free to interact immediately,
             // the interaction to confirm the last dialogue line could activate something else otherwise
             Invoke("FreePlayer", 1f);
 
