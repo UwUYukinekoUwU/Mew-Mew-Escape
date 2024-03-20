@@ -28,6 +28,11 @@ public class PlayerController : InputController
         return Input.GetKeyDown(KeyCode.C);
     }
 
+    public bool Escape()
+    {
+        return Input.GetKeyDown(KeyCode.Escape);
+    }
+
     public bool LeftArrow()
     {
         return Input.GetKeyDown(KeyCode.LeftArrow);

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static GameM;
 
 public class PlayerAnimationHandler : MonoBehaviour
 {
@@ -56,6 +57,7 @@ public class PlayerAnimationHandler : MonoBehaviour
 
         //if (_Attacking) return LockState(Normal_attack, attackAnimDuration);
         //if (_Jumping) return Jump;
+        if (Game.PlayerBusy) return Idle;
         if (_RunningSideways) return RunningSideways;
         if (_RunningUpwards) return RunningUpwards;
         if (_RunningDownwards) return RunningDownwards;

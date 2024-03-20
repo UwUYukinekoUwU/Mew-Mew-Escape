@@ -15,12 +15,16 @@ public class Walk : MonoBehaviour
 
     private Vector2 _direction;
     private ContactFilter2D triggerCollidersFilter = new ContactFilter2D();
+    private LayerMask layerMask;
 
     public void Start()
     {
         _controller = GetComponent<Controlls>().input;
         _hitbox = GetComponent<BoxCollider2D>();
         triggerCollidersFilter.useTriggers = false;
+        layerMask = ~(1 << LayerMask.NameToLayer("Bounds"));
+        triggerCollidersFilter.useLayerMask = true;
+        triggerCollidersFilter.SetLayerMask(layerMask);
     }
 
     public void Update()
@@ -47,33 +51,35 @@ public class Walk : MonoBehaviour
     protected void Move()
     {
         RaycastHit2D[] _results = new RaycastHit2D[2];
+        float xInput = horizontalInput;
+        float yInput = verticalInput;
 
         //check x 
-        _direction = new Vector2(horizontalInput, 0);
+        _direction = new Vector2(xInput, 0);
         if (_hitbox.Cast(_direction, triggerCollidersFilter, _results, Speed * Time.deltaTime + 0.01f) != 0)
         {
             foreach (RaycastHit2D r in _results)
             {
                 if (r == false) break;
-                horizontalInput = Mathf.Sign(horizontalInput) * (r.distance - 0.01f);
+                xInput = Mathf.Sign(xInput) * (r.distance - 0.01f);
                 break;
             }
         }
 
         //check y
-        _direction = new Vector2(0, verticalInput);
+        _direction = new Vector2(0, yInput);
         if (_hitbox.Cast(_direction, triggerCollidersFilter, _results, Speed * Time.deltaTime + 0.01f) != 0)
         {
             foreach (RaycastHit2D r in _results)
             {
                 if (r == false) break;
-                verticalInput = Mathf.Sign(verticalInput) * (r.distance - 0.01f);
+                yInput = Mathf.Sign(yInput) * (r.distance - 0.01f);
                 break;
             }
         }
 
         //perform the move
-        transform.Translate(horizontalInput * Speed * Time.deltaTime, verticalInput * Speed * Time.deltaTime, 0f);
+        transform.Translate(xInput * Speed * Time.deltaTime, yInput * Speed * Time.deltaTime, 0f);
     }
 }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameM;
 
 public class HidingBox : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class HidingBox : MonoBehaviour
         _controller = GetComponent<Controlls>().input as PlayerController;
         Rigidbody2D _rb = GetComponent<Rigidbody2D>();
         _rb.constraints &= ~RigidbodyConstraints2D.FreezePosition;
+
+        Game.mainCamera.Follow = GetComponent<Transform>();
     }
 
     public void Update()
@@ -27,6 +30,7 @@ public class HidingBox : MonoBehaviour
             Destroy(gameObject);
             player.transform.position = gameObject.transform.position;
             player.SetActive(true);
+            Game.mainCamera.Follow = player.transform;
         }
     }
 }

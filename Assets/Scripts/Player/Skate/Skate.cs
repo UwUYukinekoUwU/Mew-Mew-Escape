@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameM;
 
 public class Skate : Walk
 {
@@ -10,12 +11,12 @@ public class Skate : Walk
     private SkateAnimationHandler _skateAnimationHandler;
     private BoxCollider2D _skateboardCollider;
 
-    private Vector2 horizontalColliderSize = new Vector2(0.16f, 0.12f);
-    private Vector2 verticalColliderSize = new Vector2(0.14f, 0.16f);
+    private Vector2 horizontalColliderSize = new Vector2(1.155813f, 0.9104733f);
+    private Vector2 verticalColliderSize = new Vector2(0.7302036f, 0.9872522f);
 
-    private Vector2 sidewaysColliderOffset = new Vector2(0.01435965f, -0.03722871f);
-    private Vector2 downwardsColliderOffset = new Vector2(0.003526352f, -0.01556215f);
-    private Vector2 upwardsColliderOffset = new Vector2(0.01f, 0.02f);
+    private Vector2 sidewaysColliderOffset = new Vector2(0.03432083f, -0.2417591f);
+    private Vector2 downwardsColliderOffset = new Vector2(0.02771473f, -0.04217005f);
+    private Vector2 upwardsColliderOffset = new Vector2(0.02695036f, 0.04542518f);
 
     public new void Start()
     {
@@ -24,6 +25,8 @@ public class Skate : Walk
         _skateAnimationHandler = GetComponent<SkateAnimationHandler>();
         _skateAnimationHandler._InactiveSkateboard = false;
         _skateboardCollider = GetComponent<BoxCollider2D>();
+
+        Game.mainCamera.Follow = GetComponent<Transform>();
     }
 
     public new void Update()
@@ -91,6 +94,7 @@ public class Skate : Walk
         Destroy(gameObject);
         _player.transform.position = gameObject.transform.position;
         _player.SetActive(true);
+        Game.mainCamera.Follow = _player.transform;
     }
 
 

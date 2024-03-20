@@ -24,7 +24,7 @@ namespace DialogueSystem
         //and waking it up is cumbersome
         public void Update()
         {
-            if (Player.Interact())
+            if (Player.Interact() && !Game.PlayerBusy)
             {
                 Game.PlayerBusy = true;
                 dialogue.enabled = true;
