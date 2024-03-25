@@ -14,13 +14,16 @@ public class CameraMovement : MonoBehaviour
     [Header("References")]
     [SerializeField] private InputController _input;
 
+    private CinemachineVirtualCamera mainCamera;
     private Vector2 followVector = Vector2.zero;
     private CinemachineFramingTransposer _cinemachineTransposer;
     private Coroutine _pointTransitionCoroutine;
 
     public void Start()
     {
-        _cinemachineTransposer = Game.mainCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
+        mainCamera = Game.GetComponentByName<CinemachineVirtualCamera>("Virtual Camera");
+        mainCamera.Follow = Game.GetComponentByName<Transform>("Player");
+        _cinemachineTransposer = mainCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
     }
 
     public void FixedUpdate()

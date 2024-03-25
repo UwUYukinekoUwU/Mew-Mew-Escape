@@ -11,6 +11,9 @@ public class SoundM : MonoBehaviour
    
     public void Awake()
     {
+        if (_Sounds != null)
+            return;
+
         audioSrc = GetComponent<AudioSource>();
         _Sounds = this;
     }

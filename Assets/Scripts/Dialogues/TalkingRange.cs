@@ -9,8 +9,11 @@ namespace DialogueSystem
     [RequireComponent (typeof(Dialogue))]
     public class TalkingRange : MonoBehaviour
     {
-        [SerializeField] private PlayerController Player;
 
+        [SerializeField] private GameObject Player;
+
+        private PlayerController playerController;
+        private Walk playerMovement;
         private CircleCollider2D talkingRange;
         private Dialogue dialogue;
 
@@ -18,15 +21,20 @@ namespace DialogueSystem
         {
             talkingRange = GetComponent<CircleCollider2D>();
             dialogue = GetComponent<Dialogue>();
+
+            playerController = Player.GetComponent<Controlls>().input as PlayerController;
+            playerMovement = Player.GetComponent<PlayerWalk>();
         }
 
         //sadly can't use OnTriggerStay as the player rigidbody goes to sleep after not moving for a while
         //and waking it up is cumbersome
         public void Update()
         {
-            if (Player.Interact() && !Game.PlayerBusy)
+            if (playerController.Interact() && !Game.PlayerBusy)
             {
                 Game.PlayerBusy = true;
+                Game.InDialogue = true;
+                playerMovement.enabled = false;
                 dialogue.enabled = true;
                 talkingRange.enabled = false;
                 enabled = false;
@@ -38,7 +46,6 @@ namespace DialogueSystem
             if (other.gameObject.tag != "Player") return;
 
             //animation that the dialogue is available
-            Debug.Log("player in collision range");
             enabled = true;
         }
         public void OnTriggerExit2D(Collider2D collision)
@@ -46,22 +53,21 @@ namespace DialogueSystem
             if (collision.gameObject.tag != "Player") return;
 
             //stop the animation
-            Debug.Log("player out of talking range");
             enabled = false;
         }
         public void ReEnableTalkingRange()
         {   
-            Debug.Log("Talking range reenabled");
             talkingRange.enabled = true;
+            Game.InDialogue = false;
 
             // don't want to make the player free to interact immediately,
             // the interaction to confirm the last dialogue line could activate something else otherwise
-            Invoke("FreePlayer", 1f);
-
+            Invoke("FreePlayer", 0.5f);
         }
         private void FreePlayer()
         {
             Game.PlayerBusy = false;
+            playerMovement.enabled = true;
         }
     }
 

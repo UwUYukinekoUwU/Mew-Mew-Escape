@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 11400000, guid: 19aaabe9fba664a468c1aa6a72b93c26, type: 2}
+  playerMovement: {fileID: 0}
 --- !u!114 &7332866887439099272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,7 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d60c8908565ccad4093ae11d050346d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMovement: {fileID: 0}
+  playerStatsCanvas: {fileID: 0}
   Player: {fileID: 11400000, guid: 19aaabe9fba664a468c1aa6a72b93c26, type: 2}
   imageHolder: {fileID: 0}
   textHolder: {fileID: 0}

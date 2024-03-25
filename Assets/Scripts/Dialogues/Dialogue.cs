@@ -14,9 +14,10 @@ namespace DialogueSystem
     /// </summary>
     public class Dialogue : MonoBehaviour
     {
-        [Header("Links")]
-        [Tooltip("Needed for disabling player's movement")]
-        [SerializeField] private PlayerWalk playerMovement;
+        [Header("References")]
+        [Tooltip("Needed for disabling canvas, it would draw over our dialogues")]
+        [SerializeField] private GameObject playerStatsCanvas;
+
         [SerializeField] private PlayerController Player;
         [SerializeField] private Image imageHolder;
         [SerializeField] private TextMeshProUGUI textHolder;
@@ -102,7 +103,7 @@ namespace DialogueSystem
             ActivateDialogue(false);
             talkingRange.ReEnableTalkingRange();
             this.enabled = false;
-            playerMovement.enabled = true;
+            playerStatsCanvas.SetActive(true);
         }
         /// <summary>
         /// Makes the dialogue box visible.
@@ -110,7 +111,7 @@ namespace DialogueSystem
         public void ShowDialogue()
         {
             ActivateDialogue(true);
-            playerMovement.enabled = false;
+            playerStatsCanvas.SetActive(false);
         }
         /// <summary>
         /// After player answers, this invokes the action passed.
@@ -123,6 +124,12 @@ namespace DialogueSystem
             dialogueAnswer = null;
             afterAnswer(answer);
         }
+
+        public void StartTalking()
+        {
+            StartCoroutine(_lines[0]);
+        }
+
         /// <summary>
         /// Starts saying the next line in the batch, if there is one.
         /// </summary>
@@ -177,23 +184,3 @@ namespace DialogueSystem
         }
     }
 }
-
-/*public void ReadDialogueFromFile(string branchName)
-        {
-            string contents = dialogueFile.text;
-            string[] lines = contents.Split('\n');
-
-        }      
- * 
- * public class Branch
-        {
-            public string name;
-            public delegate void DialogueBranch();
-            public event DialogueBranch dialogueBranch;
-
-            public Branch(string name, Dialogue dialogue)
-            {
-                this.name = name;
-                dialogueBranch += dialogue.ResetLine; 
-            }          
-        }*/

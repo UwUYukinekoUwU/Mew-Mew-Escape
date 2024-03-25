@@ -30,10 +30,15 @@ public class PlayerWalk : Walk
             _handler._RunningSideways = true;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void Stun(float duration)
     {
-        string s = LayerMask.LayerToName(collision.transform.gameObject.layer);
-        Debug.Log("collided with " + s);
-        Debug.Log("this layer " + gameObject.layer);
+        //add some starry animation here mb
+        enabled = false;
+        Invoke("ReEnableMovement", duration);
+    }
+
+    private void ReEnableMovement()
+    {
+        enabled = true;
     }
 }

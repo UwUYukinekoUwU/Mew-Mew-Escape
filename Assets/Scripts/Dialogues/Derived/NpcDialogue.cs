@@ -55,7 +55,7 @@ namespace DialogueSystem
             _lines.Add(WriteText("aaaaaaaaaaaaaaaaaaaaaaaaaa", p.Instance()));
 
            
-            StartCoroutine(_lines[0]);
+            StartTalking();
 
             StartCoroutine(WaitForAnswer(dialogueAnswer =>
             {
@@ -92,7 +92,7 @@ namespace DialogueSystem
             p.afterFinish = () => HideDialogue();
             _lines.Add(WriteText("Ergh! Die!", p.Instance()));
 
-            StartCoroutine(_lines[0]);            
+            StartTalking();           
         }
 
         private void WhereAreYouGoing()
@@ -103,8 +103,8 @@ namespace DialogueSystem
             p.portrait = 1;
             p.voice = 1;
             p.afterFinish = () => { HideDialogue(); };
-            _lines.Add(WriteText("Where you goin", p.Instance()));            
-            StartCoroutine(_lines[0]);
+            _lines.Add(WriteText("Where you goin", p.Instance()));
+            StartTalking();
         }
 
         private void YouDontHaveAny()
@@ -115,7 +115,7 @@ namespace DialogueSystem
             p.voice = 2;
             p.afterFinish = () => HideDialogue();
             _lines.Add(WriteText("*You don't have any", p.Instance()));
-            StartCoroutine(_lines[0]);
+            StartTalking();
         }
 
         private void Cry()
@@ -126,7 +126,7 @@ namespace DialogueSystem
             p.voice = 2;
             p.afterFinish = () => { HideDialogue(); };
             _lines.Add(WriteText("*You don't have any", p.Instance()));
-            StartCoroutine(_lines[0]);
+            StartTalking();
         }
     }
 }

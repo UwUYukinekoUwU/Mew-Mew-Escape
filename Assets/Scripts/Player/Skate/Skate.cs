@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,11 +6,17 @@ using static GameM;
 
 public class Skate : Walk
 {
-    [SerializeField]
-    private GameObject _player;
+    [Header("References")]
+    [SerializeField] private GameObject _player;
+
+    [Header("Parameters")]
+    [SerializeField] private float stunDuration = 3f;
+
     private PlayerController _playerController;
+    private PlayerWalk _playerWalk;
     private SkateAnimationHandler _skateAnimationHandler;
     private BoxCollider2D _skateboardCollider;
+    private CinemachineVirtualCamera mainCamera;
 
     private Vector2 horizontalColliderSize = new Vector2(1.155813f, 0.9104733f);
     private Vector2 verticalColliderSize = new Vector2(0.7302036f, 0.9872522f);
@@ -25,8 +32,10 @@ public class Skate : Walk
         _skateAnimationHandler = GetComponent<SkateAnimationHandler>();
         _skateAnimationHandler._InactiveSkateboard = false;
         _skateboardCollider = GetComponent<BoxCollider2D>();
+        _playerWalk = _player.GetComponent<PlayerWalk>();
 
-        Game.mainCamera.Follow = GetComponent<Transform>();
+        mainCamera = Game.GetComponentByName<CinemachineVirtualCamera>("Virtual Camera");
+        mainCamera.Follow = GetComponent<Transform>();
     }
 
     public new void Update()
@@ -81,7 +90,6 @@ public class Skate : Walk
             _skateboardCollider.size = horizontalColliderSize;
         }
 
-
         //move
         Move();
     }
@@ -94,8 +102,9 @@ public class Skate : Walk
         Destroy(gameObject);
         _player.transform.position = gameObject.transform.position;
         _player.SetActive(true);
-        Game.mainCamera.Follow = _player.transform;
+        mainCamera.Follow = _player.transform;
+
+        //stun the player for a while
+        _playerWalk.Stun(stunDuration);
     }
-
-
 }

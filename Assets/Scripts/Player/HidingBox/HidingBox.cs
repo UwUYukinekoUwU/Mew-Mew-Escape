@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,9 +7,11 @@ using static GameM;
 public class HidingBox : MonoBehaviour
 {
     public float Duration = 15.0f;
-    [SerializeField]
-    private GameObject player;
 
+    [Header("References")]
+    [SerializeField] private GameObject player;
+
+    private CinemachineVirtualCamera mainCamera;
     private PlayerController _controller;
     private float timer = 0f;
 
@@ -18,7 +21,8 @@ public class HidingBox : MonoBehaviour
         Rigidbody2D _rb = GetComponent<Rigidbody2D>();
         _rb.constraints &= ~RigidbodyConstraints2D.FreezePosition;
 
-        Game.mainCamera.Follow = GetComponent<Transform>();
+        mainCamera = Game.GetComponentByName<CinemachineVirtualCamera>("Virtual Camera");
+        mainCamera.Follow = GetComponent<Transform>();
     }
 
     public void Update()
@@ -30,7 +34,7 @@ public class HidingBox : MonoBehaviour
             Destroy(gameObject);
             player.transform.position = gameObject.transform.position;
             player.SetActive(true);
-            Game.mainCamera.Follow = player.transform;
+            mainCamera.Follow = player.transform;
         }
     }
 }
