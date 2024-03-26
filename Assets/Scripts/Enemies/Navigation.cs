@@ -14,16 +14,29 @@ namespace AI
         private ContactFilter2D ignoreBoundsFilter = new ContactFilter2D();
 
 
-        //private void OnDrawGizmos()
-        //{
-        //    Gizmos.color = Color.red;
-        //    foreach (Vector2 point in VisiblePoints())
-        //    {
-        //        Gizmos.DrawSphere(point, 0.1f);
-        //        Debug.DrawRay(transform.position, point, Color.red);
-        //        Debug.Log(point);
-        //    }
-        //}
+        private void OnDrawGizmos()
+        {
+            //Gizmos.color = Color.red;
+            //List<Vector2> visiblePoints = VisiblePoints();
+            //Debug.LogWarning(visiblePoints.Count);
+            //foreach (Vector2 point in visiblePoints)
+            //{
+            //    Gizmos.DrawSphere(point, 0.1f);
+            //    Debug.Log(point);
+            //}
+            float startingPointX = transform.position.x - gridPointDistance * (searchGridSize / 2);
+            float startingPointY = transform.position.y - gridPointDistance * (searchGridSize / 2);
+            Vector2 currentPoint;
+            for (int i = 0; i < searchGridSize; i++)
+            {
+                currentPoint.x = startingPointX + i * gridPointDistance;
+                for (int j = 0; j < searchGridSize; j++)
+                {
+                    currentPoint.y = startingPointY + j * gridPointDistance;
+                    Gizmos.DrawSphere(currentPoint, 0.1f);
+                }
+            }
+        }
 
         public void Start()
         {
@@ -46,6 +59,8 @@ namespace AI
                 float currentDistance = (visiblePoints[i] - destination).sqrMagnitude;
                 if (CanGoToPoint(visiblePoints[i], destination) && currentDistance < closestDistance) 
                 {
+                    if (DestinationReached(visiblePoints[i]))
+                        continue;
                     closestPoint = visiblePoints[i];
                     closestDistance = currentDistance;
                 }
@@ -78,6 +93,15 @@ namespace AI
             return true;
         }
 
+        public bool DestinationReached(Vector2 destination)
+        {
+            Vector2 thisPosition = transform.position;
+
+            if ((thisPosition - destination).sqrMagnitude < 1f)
+                return true;
+
+            return false;
+        }
 
         private List<Vector2> VisiblePoints()
         {
@@ -94,13 +118,14 @@ namespace AI
                     currentPoint.y = startingPointY + j * gridPointDistance;
                     if (CanGoToPoint(currentPoint))
                     {
-                        possiblePoints.Append(currentPoint);
+                        possiblePoints.Add(currentPoint);
                     }
                 }
             }
-
             return possiblePoints;
         }
+
+
     }
 
 }

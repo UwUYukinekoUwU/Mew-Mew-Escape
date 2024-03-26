@@ -1366,6 +1366,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3318964774012458737, guid: 45ed6e1ffe8b89d4ba787dd251098f4c, type: 3}
+      propertyPath: m_Radius
+      value: 5.7995315
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318964774012458737, guid: 45ed6e1ffe8b89d4ba787dd251098f4c, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.13500452
+      objectReference: {fileID: 0}
     - target: {fileID: 5707899821604797329, guid: 45ed6e1ffe8b89d4ba787dd251098f4c, type: 3}
       propertyPath: m_Name
       value: GangCatStationPoint
@@ -1413,6 +1421,14 @@ PrefabInstance:
     - target: {fileID: 6915276610283245647, guid: 45ed6e1ffe8b89d4ba787dd251098f4c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7236255675350918608, guid: 45ed6e1ffe8b89d4ba787dd251098f4c, type: 3}
+      propertyPath: searchGridSize
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7236255675350918608, guid: 45ed6e1ffe8b89d4ba787dd251098f4c, type: 3}
+      propertyPath: gridPointDistance
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

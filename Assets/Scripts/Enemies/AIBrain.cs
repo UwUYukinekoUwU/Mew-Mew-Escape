@@ -31,7 +31,6 @@ namespace AI
 
         private float lastSeenTimer;
 
-
         public void Start()
         {
             stateChecker = GetComponent<StateChecker>();
@@ -69,11 +68,15 @@ namespace AI
             }
 
 
-            if (DestinationReached(currentTarget.Last()))
+            if (navigation.DestinationReached(currentTarget.Last()))
             {
                 if (currentTarget.Count != 1)
                 {
-                    currentTarget.RemoveAt(currentTarget.Count - 1);
+                    Vector2 tmp = currentTarget[0];
+                    currentTarget.Clear();
+                    currentTarget.Add(tmp);
+                    _controller.HorizontalInput = 0;
+                    _controller.VerticalInput = 0;
                 }
                 else
                 {
@@ -91,6 +94,7 @@ namespace AI
                 if (midpoint != null)
                 {
                     currentTarget.Add((Vector2)midpoint);
+                    //Debug.LogWarning(currentTarget.Count + " " + navigation.DestinationReached((Vector2)midpoint));
                 }
                 else
                 {
@@ -99,6 +103,7 @@ namespace AI
                     _controller.VerticalInput = 0;
                     return;
                 }
+                Debug.Log("Destination reached " + navigation.DestinationReached((Vector2)midpoint));
             }
             else
             {
@@ -119,7 +124,7 @@ namespace AI
 
         private void HeadToIdle()
         {
-            if (DestinationReached(currentTarget.Last()) && currentTarget.Count == 1)
+            if (navigation.DestinationReached(currentTarget.Last()) && currentTarget.Count == 1)
             {
                 InIdlePlace = true;
                 Debug.Log("Idle destination reached");
@@ -161,18 +166,9 @@ namespace AI
             }
 
             // returns a vector needed to get to the angle
-            return Quaternion.Euler(0, 0, selectedAngle) * Vector2.right;
-        }
-
-
-        private bool DestinationReached(Vector2 destination)
-        {
-            Vector2 thisPosition = transform.position;
-         
-            if ((thisPosition - destination).sqrMagnitude < 1f)
-                return true;
-
-            return false;
+            //return Quaternion.Euler(0, 0, selectedAngle) * Vector2.right;
+            return direction.normalized;
+            //return new Vector2(Mathf.Cos(selectedAngle), Mathf.Sin(selectedAngle));
         }
 
     }
