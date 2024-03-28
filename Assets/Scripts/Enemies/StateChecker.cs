@@ -55,16 +55,32 @@ namespace AI
                 IsFollowing = RaycastForTarget(collision.gameObject.transform.position);
         }
 
-        public bool RaycastForTarget(Vector3 targetPosition)
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="targetPosition"></param>
+        /// <param name="targetTag">
+        /// Leave empty "" for target points without collider. 
+        /// If not supplied, Player tag will be used instead.</param>
+        /// <returns>Whether the raycast reach its target or not</returns>
+        public bool RaycastForTarget(Vector3 targetPosition, string targetTag = null)
         {
             Vector2 direction = targetPosition - transform.position;
             //Debug.DrawRay(transform.position, direction.normalized * rangeForRaycast, Color.red);
+
+            if (targetTag == null)
+                targetTag = "Player";
+
             RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, rangeForRaycast, ignoreBoundsLayer);
             if (hit)
             {
-                if (hit.collider.gameObject.tag == "Player")
+                if (hit.collider.gameObject.tag == targetTag)
                     return true;
             }
+
+            if (targetTag == "")
+                return true;
 
             return false;
         }

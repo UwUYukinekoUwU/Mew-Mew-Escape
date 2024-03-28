@@ -74,7 +74,15 @@ namespace AI
 
         public bool CanGoToPoint(Vector2 destination, Vector2? sourcePosition=null)
         {
-            if (sourcePosition == null) 
+            if (GetContactPoint(destination, sourcePosition) == null) 
+                return true;
+
+            return false;
+        }
+
+        public Vector2? GetContactPoint(Vector2 destination, Vector2? sourcePosition=null)
+        {
+            if (sourcePosition == null)
                 sourcePosition = transform.position;
             Vector2 _sourcePosition = (Vector2)sourcePosition;
 
@@ -86,12 +94,13 @@ namespace AI
                 foreach (RaycastHit2D r in _results)
                 {
                     if (r == false) break;
-                    return false;
+                    return r.point;
                 }
             }
 
-            return true;
+            return null;
         }
+
 
         public bool DestinationReached(Vector2 destination)
         {
@@ -103,7 +112,7 @@ namespace AI
             return false;
         }
 
-        private List<Vector2> VisiblePoints()
+        public List<Vector2> VisiblePoints()
         {
             List<Vector2> possiblePoints = new List<Vector2>(searchGridSize * searchGridSize);
 

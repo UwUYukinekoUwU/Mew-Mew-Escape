@@ -51,35 +51,36 @@ public class Walk : MonoBehaviour
     protected void Move()
     {
         RaycastHit2D[] _results = new RaycastHit2D[2];
-        float xInput = horizontalInput;
-        float yInput = verticalInput;
+        Vector2 moveVector = new Vector2(horizontalInput, verticalInput);
+        //dont want the player to move faster diagonally
+        moveVector = moveVector.normalized;
 
         //check x 
-        _direction = new Vector2(xInput, 0);
+        _direction = new Vector2(moveVector.x, 0);
         if (_hitbox.Cast(_direction, triggerCollidersFilter, _results, Speed * Time.deltaTime + 0.01f) != 0)
         {
             foreach (RaycastHit2D r in _results)
             {
                 if (r == false) break;
-                xInput = Mathf.Sign(xInput) * (r.distance - 0.01f);
+                moveVector.x = Mathf.Sign(moveVector.x) * (r.distance - 0.01f);
                 break;
             }
         }
 
         //check y
-        _direction = new Vector2(0, yInput);
+        _direction = new Vector2(0, moveVector.y);
         if (_hitbox.Cast(_direction, triggerCollidersFilter, _results, Speed * Time.deltaTime + 0.01f) != 0)
         {
             foreach (RaycastHit2D r in _results)
             {
                 if (r == false) break;
-                yInput = Mathf.Sign(yInput) * (r.distance - 0.01f);
+                moveVector.y = Mathf.Sign(moveVector.y) * (r.distance - 0.01f);
                 break;
             }
         }
 
         //perform the move
-        transform.Translate(xInput * Speed * Time.deltaTime, yInput * Speed * Time.deltaTime, 0f);
+        transform.Translate(moveVector.x * Speed * Time.deltaTime, moveVector.y * Speed * Time.deltaTime, 0f);
     }
 }
 
