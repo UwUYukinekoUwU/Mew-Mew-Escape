@@ -1,7 +1,6 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
-using System.Net;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -27,6 +26,7 @@ namespace AI
         private Vector2 _distance;
         private Vector2 _playerPoint;
         private bool _attacking;
+        private bool _finishedLerping;
 
         public void Start()
         {
@@ -59,21 +59,11 @@ namespace AI
 
         public void OnCollisionEnter2D(Collision2D collision)
         {
-            // always detect and hurt the player
-            if (!_attacking)
-            {
-                if (collision.gameObject.tag != "Player")
-                    return;
-                if (gameObject.TryGetComponent(out _targetHealth))
-                    _targetHealth.DoDamage(damage);
-                return;
-            }
-
-            // damage everything when attacking
-            if (collision.gameObject.tag != "Enemy" && collision.gameObject.tag != "Hitable")
+            // always detect and hurt the player, even when not attacking
+            if (!_attacking && collision.gameObject.tag != "Player")
                 return;
 
-            if(gameObject.TryGetComponent(out _targetHealth))
+            if (collision.gameObject.TryGetComponent(out _targetHealth))
                 _targetHealth.DoDamage(damage);
         }
 
@@ -81,7 +71,6 @@ namespace AI
         private IEnumerator DashAttack()
         {
             Vector2 currentPosition = transform.position;
-            Vector2 moveVector;
 
             Vector2 prepareDirection = (_playerPoint - currentPosition) * dashPrepareDistance * -1;
             Vector2 targetDirection = (_playerPoint - currentPosition) * (1 + dashInertia);
@@ -97,42 +86,37 @@ namespace AI
             Debug.DrawLine(startPoint, preparePoint, Color.yellow);
             Debug.DrawLine(preparePoint, endPoint, Color.cyan);
 
-            float elapsedTime = 0f;
-            while (elapsedTime < prepareTime)
-            {
-                elapsedTime += Time.deltaTime;
+            // first get to prepare point
+            StartCoroutine(TransformByLerp(startPoint, preparePoint, prepareTime));
+            yield return new WaitUntil(() => _finishedLerping);
+            _finishedLerping = false;
 
-                moveVector.x = Mathf.Lerp(startPoint.x, preparePoint.x, (elapsedTime / prepareTime));
-                moveVector.y = Mathf.Lerp(startPoint.y, preparePoint.y, (elapsedTime / prepareTime));
+            // then jump after the player
+            StartCoroutine(TransformByLerp(preparePoint, endPoint, attackTime));
+            yield return new WaitUntil(() => _finishedLerping);
+            _finishedLerping = false;
 
-                transform.position = moveVector;
-
-                Debug.DrawLine(startPoint, preparePoint, Color.yellow);
-                Debug.DrawLine(preparePoint, endPoint, Color.cyan);
-
-                yield return null;
-            }
-
-            elapsedTime = 0f;
-            while (elapsedTime < attackTime)
-            {
-                elapsedTime += Time.deltaTime;
-
-                moveVector.x = Mathf.Lerp(preparePoint.x, endPoint.x, (elapsedTime / attackTime));
-                moveVector.y = Mathf.Lerp(preparePoint.y, endPoint.y, (elapsedTime / attackTime));
-
-                transform.position = moveVector;
-
-                Debug.DrawLine(startPoint, preparePoint, Color.yellow);
-                Debug.DrawLine(preparePoint, endPoint, Color.cyan);
-
-                yield return null;
-            }
             _aiBrain.enabled = true;
             _attacking = false;
         }
 
-        //private IEnumerator LerpPoints(Vector2 startPoint, Vector2 endPoint, prepareTime)
+        private IEnumerator TransformByLerp(Vector2 startPoint, Vector2 endPoint, float _time)
+        {
+            Vector2 moveVector;
+            float elapsedTime = 0f;
+            while (elapsedTime < _time)
+            {
+                elapsedTime += Time.deltaTime;
+
+                moveVector.x = Mathf.Lerp(startPoint.x, endPoint.x, (elapsedTime / _time));
+                moveVector.y = Mathf.Lerp(startPoint.y, endPoint.y, (elapsedTime / _time));
+
+                transform.position = moveVector;
+
+                yield return null;
+            }
+            _finishedLerping = true;
+        }
 
     }
 }

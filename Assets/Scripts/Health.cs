@@ -12,40 +12,57 @@ public class Health : MonoBehaviour
     private float _timer;
     private bool _hurting;
 
+
+    public void Start()
+    {
+        _collider = GetComponent<BoxCollider2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    public void FixedUpdate()
+    {
+        if (GameM.Game.Paused)
+            return;
+
+        if (!_hurting)
+            return;
+
+
+        if (_timer < immortalityTime)
+        {
+            _timer += Time.deltaTime;
+        }
+        else
+        {
+            _hurting = false;
+            _collider.enabled = true;
+            _spriteRenderer.color = Color.white; //TODO delete later when an animation is finihsed
+        }
+    }
+
     public void DoDamage(int damage)
     {
         if (_hurting)
-        {
-            if (_timer < immortalityTime)
-            {
-                _timer += Time.deltaTime;
-            }
-            else
-            {
-                _hurting = false;
-                _collider.enabled = true;
-            }
-                
             return;
-        }
 
         _hurting = true;
         _collider.enabled = false;
         _timer = 0;
         HurtAnimation();
         Lives -= damage;
+        Debug.LogWarning(Lives);
         if (Lives <= 0)
             GetKilled();
     }
 
-    protected void GetKilled()
+    protected virtual void GetKilled()
     {
         Debug.Log("killed " + gameObject.name);
         Destroy(gameObject);
     }
 
 
-    protected void HurtAnimation()
+    protected virtual void HurtAnimation()
     {
         _spriteRenderer.color = Color.red;
         //IEnumerator WhiteRedFlicker()
