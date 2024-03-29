@@ -15,6 +15,7 @@ public class GameM : MonoBehaviour
     public bool Paused { get; set; }
     public bool InDialogue { get; set; }
     public float HungerTimer { get; set; }
+    public int Lives { get; set; }
 
     public void LoseGame()
     {

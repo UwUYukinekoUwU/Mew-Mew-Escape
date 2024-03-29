@@ -85,9 +85,7 @@ namespace AI
             }
             else
             {
-                Vector2 tmp = currentTarget[0];
-                currentTarget.Clear();
-                currentTarget.Add(tmp);
+                TrimTargetList();
             }
 
             Vector2 _input = GetInputFromDirection(currentTarget.Last() - currentPosition);

@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 413745683038310070}
   - component: {fileID: 1134182502223818309}
   - component: {fileID: 7604517462982796270}
+  - component: {fileID: 2545012464357116586}
   - component: {fileID: 8207343045336186620}
   - component: {fileID: 4850338719889932682}
   - component: {fileID: 6107393662329153687}
@@ -278,6 +279,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hunger: {fileID: 8575068132093583173}
   fishSecondsAdded: 5
+--- !u!114 &2545012464357116586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7553757620284930384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 623c29b399277664f88946bbc63a8826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Lives: 9
+  immortalityTime: 2
 --- !u!212 &8207343045336186620
 SpriteRenderer:
   m_ObjectHideFlags: 0

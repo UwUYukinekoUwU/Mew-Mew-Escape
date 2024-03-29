@@ -1394,6 +1394,10 @@ PrefabInstance:
       propertyPath: prepareTime
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 2815364165027350813, guid: 45ed6e1ffe8b89d4ba787dd251098f4c, type: 3}
+      propertyPath: dashAttackRange
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5514875146560022473, guid: 45ed6e1ffe8b89d4ba787dd251098f4c, type: 3}
       propertyPath: m_Layer
       value: 8
