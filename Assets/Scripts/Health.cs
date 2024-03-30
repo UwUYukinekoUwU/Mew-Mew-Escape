@@ -40,7 +40,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void DoDamage(int damage)
+    public virtual void DoDamage(int damage)
     {
         if (_hurting)
             return;

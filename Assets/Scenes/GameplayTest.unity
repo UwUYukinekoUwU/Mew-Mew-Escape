@@ -144,6 +144,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2963504894780610174, guid: d294fec5acd97994d8e0a6d235f3713e, type: 3}
   m_PrefabInstance: {fileID: 7883648736153587380}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &593896372 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1766432238401913224, guid: dbdfc14035c55c7439b8c337264af121, type: 3}
+  m_PrefabInstance: {fileID: 1119463458}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &612646252
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,6 +590,10 @@ PrefabInstance:
     - target: {fileID: 6779670512679288498, guid: dbdfc14035c55c7439b8c337264af121, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8287796125668800744, guid: dbdfc14035c55c7439b8c337264af121, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1301,6 +1316,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2545012464357116586, guid: cf4f3b9021187804596a7856e5568873, type: 3}
+      propertyPath: livesText
+      value: 
+      objectReference: {fileID: 593896372}
     - target: {fileID: 3894624469371933131, guid: cf4f3b9021187804596a7856e5568873, type: 3}
       propertyPath: m_Name
       value: PlayerHolder
@@ -1454,6 +1473,10 @@ PrefabInstance:
       propertyPath: _Player
       value: 
       objectReference: {fileID: 983964544}
+    - target: {fileID: 8398518270758750113, guid: 45ed6e1ffe8b89d4ba787dd251098f4c, type: 3}
+      propertyPath: trailTime
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

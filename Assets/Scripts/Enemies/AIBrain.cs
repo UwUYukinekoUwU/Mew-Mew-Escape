@@ -105,7 +105,7 @@ namespace AI
         }
 
 
-        public void HeadToIdle()
+        public virtual void HeadToIdle()
         {
             if (navigation.DestinationReached(currentTarget.Last()) && currentTarget.Count == 1)
             {
@@ -115,7 +115,7 @@ namespace AI
             currentTarget[0] = stationPoint.position;
         }
 
-        public void FollowTarget(Vector3 targetPosition, string targetTag = null)
+        public virtual void FollowTarget(Vector3 targetPosition, string targetTag = null)
         {
             if (stateChecker.RaycastForTarget(targetPosition, targetTag))
             {
@@ -127,7 +127,7 @@ namespace AI
             currentTarget[0] = lastSeenPos;
         }
 
-        public void LoseTargetFollow()
+        public virtual void LoseTargetFollow()
         {
             stateChecker.IsFollowing = false;
             currentTarget[0] = stationPoint.position;
