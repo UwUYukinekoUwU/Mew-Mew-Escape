@@ -11,10 +11,8 @@ GameObject:
   - component: {fileID: 6853615099977498506}
   - component: {fileID: 572182242736207550}
   - component: {fileID: 7332866887439099272}
-  - component: {fileID: 4223465137743881409}
-  - component: {fileID: 98533148903624358}
+  - component: {fileID: 2299104448641734825}
   - component: {fileID: 2835393643861012793}
-  - component: {fileID: 6487515371514518711}
   m_Layer: 0
   m_Name: Npc
   m_TagString: Npc
@@ -49,8 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16bb6b5f503192a449487a4ff35322df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 11400000, guid: 19aaabe9fba664a468c1aa6a72b93c26, type: 2}
-  playerMovement: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!114 &7332866887439099272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,7 +67,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   Player: {fileID: 11400000, guid: 19aaabe9fba664a468c1aa6a72b93c26, type: 2}
---- !u!114 &4223465137743881409
+--- !u!114 &2299104448641734825
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -79,7 +76,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4997564203958186852}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d60c8908565ccad4093ae11d050346d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 002d06a739f81c94989c6eeb11140c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerStatsCanvas: {fileID: 0}
@@ -89,64 +86,9 @@ MonoBehaviour:
   dialogueBox: {fileID: 0}
   _parameters: {fileID: 11400000, guid: 3b83230078d60de4bbf3e9b57c718f52, type: 2}
   characterSprites:
-  - {fileID: 21300000, guid: 1913b2d9a862898499d6fd59d925f041, type: 3}
-  - {fileID: 21300000, guid: b3b2e38f4472d584bbc23a0cbb22a6e6, type: 3}
+  - {fileID: 21300000, guid: 5f3b423de8e756e4fbc3d0e5fa43d4f0, type: 3}
   voices:
-  - {fileID: 8300000, guid: af054f3d87ada364389b61b206cc2489, type: 3}
-  - {fileID: 8300000, guid: 7420db4060818514cb0e79546af3b263, type: 3}
   - {fileID: 8300000, guid: de79af7506fc6ac43bf2a74e1187c1c0, type: 3}
---- !u!212 &98533148903624358
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4997564203958186852}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.9302337, g: 1, b: 0, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!58 &2835393643861012793
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -179,51 +121,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.15824127, y: 0.1406591}
   serializedVersion: 2
-  m_Radius: 2
---- !u!61 &6487515371514518711
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4997564203958186852}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 2.9670308

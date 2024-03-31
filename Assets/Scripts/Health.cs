@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Health : MonoBehaviour
 {
@@ -56,14 +55,13 @@ public class Health : MonoBehaviour
         Physics2D.SetLayerCollisionMask(gameObject.layer, _ignoreCreaturesMask);
         HurtAnimation();
         Lives -= damage;
-        Debug.LogWarning(Lives);
         if (Lives <= 0)
             GetKilled();
     }
 
     protected virtual void GetKilled()
     {
-        Debug.Log("killed " + gameObject.name);
+        //Debug.Log("killed " + gameObject.name);
         Destroy(gameObject);
     }
 

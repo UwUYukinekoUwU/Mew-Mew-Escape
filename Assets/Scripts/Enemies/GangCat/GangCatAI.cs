@@ -44,7 +44,7 @@ namespace AI
                 else
                     FollowTarget(_Player.position);
 
-                //Debug.Log("Following");
+                Debug.Log("Following");
 
             }
             else if (!InIdlePlace)
@@ -52,12 +52,12 @@ namespace AI
                 idleDestinationDecided = false;
                 walk.Speed = idleSpeed;
                 HeadToIdle();
-                //Debug.Log("Heading to Idle");
+                Debug.Log("Heading to Idle");
             }
             else
             {
                 IdleLogic();
-                //Debug.Log("Idling");
+                Debug.Log("Idling");
             }
 
             base.FixedUpdate();

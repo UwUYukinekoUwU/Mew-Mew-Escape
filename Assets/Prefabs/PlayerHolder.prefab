@@ -293,7 +293,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Lives: 9
   immortalityTime: 2
-  livesText: {fileID: 0}
 --- !u!212 &8207343045336186620
 SpriteRenderer:
   m_ObjectHideFlags: 0

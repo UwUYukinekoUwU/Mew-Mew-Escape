@@ -1,11 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.Windows;
 
 
 namespace AI
@@ -43,20 +38,20 @@ namespace AI
         public void FixedUpdate()
         {
             Vector2 currentPosition = transform.position;
-            Debug.DrawLine(transform.position, currentTarget[0], Color.blue);
+            //Debug.DrawLine(transform.position, currentTarget[0], Color.blue);
 
             if (navigation.DestinationReached(currentTarget.Last()))
             {
                 if (currentTarget.Count != 1)
                 {
-                    Debug.Log("cleared target list");
+                    //Debug.Log("cleared target list");
                     TrimTargetList();
                     _controller.HorizontalInput = 0;
                     _controller.VerticalInput = 0;
                 }
                 else
                 {
-                    Debug.Log("Destination reached");
+                    //Debug.Log("Destination reached");
                     _controller.HorizontalInput = 0;
                     _controller.VerticalInput = 0;
                     return;
@@ -93,7 +88,7 @@ namespace AI
             _controller.VerticalInput = _input.y;
 
 
-            Debug.DrawLine(transform.position, currentTarget.Last(), Color.magenta);
+            //Debug.DrawLine(transform.position, currentTarget.Last(), Color.magenta);
         }
 
 
@@ -110,7 +105,7 @@ namespace AI
             if (navigation.DestinationReached(currentTarget.Last()) && currentTarget.Count == 1)
             {
                 InIdlePlace = true;
-                Debug.Log("Idle destination reached");
+                //Debug.Log("Idle destination reached");
             }
             currentTarget[0] = stationPoint.position;
         }
@@ -122,7 +117,6 @@ namespace AI
                 lastSeenPos = targetPosition;
                 lastSeenTimer = 0;
             }
-            else Debug.LogWarning("Raycast for target failed");
 
             currentTarget[0] = lastSeenPos;
         }
