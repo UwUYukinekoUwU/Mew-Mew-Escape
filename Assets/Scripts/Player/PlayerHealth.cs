@@ -6,12 +6,17 @@ using static GameM;
 
 public class PlayerHealth : Health
 {
-    [SerializeField] private TextMeshProUGUI livesText;
+    private TextMeshProUGUI livesText;
     public new void Start()
     {
         base.Start();
+        livesText = Game.GetComponentByName<TextMeshProUGUI>("LivesNumber");
         if (Game.Lives != 0)
+        {
             Lives = Game.Lives;
+            livesText.text = Lives.ToString();
+        }
+
     }
     public void OnDestroy()
     {
@@ -21,6 +26,8 @@ public class PlayerHealth : Health
     public override void DoDamage(int damage)
     {
         base.DoDamage(damage);
+        if (Lives < 0)
+            Lives = 0;
         livesText.text = Lives.ToString();
     }
 

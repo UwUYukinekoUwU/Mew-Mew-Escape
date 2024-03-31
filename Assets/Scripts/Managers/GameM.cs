@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameM : MonoBehaviour
 {
@@ -37,8 +36,6 @@ public class GameM : MonoBehaviour
             return (T) (object) searchedObject;
         return searchedObject.GetComponent<T>();
     }
-
-
 
     private GameM() { }
 

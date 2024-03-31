@@ -1,7 +1,6 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace AI
@@ -37,7 +36,7 @@ namespace AI
 
         public void Update()
         {
-            if (GameM.Game.Paused)
+            if (GameM.Game.PlayerBusy)
                 return;
 
             if (!_stateChecker.IsFollowing)
@@ -48,6 +47,9 @@ namespace AI
 
             _distance = _player.position - transform.position;
             if (_distance.magnitude > dashAttackRange)
+                return;
+
+            if (!_aiBrain.navigation.CanGoToPoint(_player.transform.position))
                 return;
 
 

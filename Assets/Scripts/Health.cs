@@ -1,22 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Health : MonoBehaviour
 {
     public int Lives = 9;
     [SerializeField] private float immortalityTime = 2f;
 
-    private BoxCollider2D _collider;
     private SpriteRenderer _spriteRenderer;
+    private LayerMask _originalLayermask;
+    private LayerMask _ignoreCreaturesMask;
     private float _timer;
     private bool _hurting;
 
 
+
     public void Start()
     {
-        _collider = GetComponent<BoxCollider2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _originalLayermask = Physics2D.GetLayerCollisionMask(gameObject.layer);
+        _ignoreCreaturesMask = _originalLayermask;
+        _ignoreCreaturesMask &= ~(1 << LayerMask.NameToLayer("Player"));
+        _ignoreCreaturesMask &= ~(1 << LayerMask.NameToLayer("Enemy"));
     }
 
     public void FixedUpdate()
@@ -35,7 +41,7 @@ public class Health : MonoBehaviour
         else
         {
             _hurting = false;
-            _collider.enabled = true;
+            Physics2D.SetLayerCollisionMask(gameObject.layer, _originalLayermask);
             _spriteRenderer.color = Color.white; //TODO delete later when an animation is finihsed
         }
     }
@@ -46,8 +52,8 @@ public class Health : MonoBehaviour
             return;
 
         _hurting = true;
-        _collider.enabled = false;
         _timer = 0;
+        Physics2D.SetLayerCollisionMask(gameObject.layer, _ignoreCreaturesMask);
         HurtAnimation();
         Lives -= damage;
         Debug.LogWarning(Lives);

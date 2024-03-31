@@ -12,7 +12,7 @@ public class AIController : InputController
     public float VerticalInput { get; set; }
     public override float GetHorizontalInput()
     {
-        if (Game.Paused) 
+        if (Game.PlayerBusy) 
             return 0;
 
         return HorizontalInput;
@@ -20,7 +20,7 @@ public class AIController : InputController
 
     public override float GetVerticalInput()
     {
-        if (Game.Paused)
+        if (Game.PlayerBusy)
             return 0;
 
         return VerticalInput;

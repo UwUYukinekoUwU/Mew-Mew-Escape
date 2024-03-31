@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 2475997884231439371}
   - component: {fileID: 3212780301697528860}
   - component: {fileID: 7646287408096911713}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GangCat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ MonoBehaviour:
   stationPoint: {fileID: 6915276610283245647}
   navigation: {fileID: 0}
   _Player: {fileID: 0}
-  trailTime: 6
+  trailTime: 3
   idleSpeed: 2
 --- !u!114 &7331249935050744736
 MonoBehaviour:
@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e6aaad746f00ca48801f77697996b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2
+  Speed: 5
   _hitbox: {fileID: 3212780301697528860}
 --- !u!114 &7236255675350918608
 MonoBehaviour:
@@ -99,11 +99,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
-  dashAttackRange: 1
-  prepareTime: 0.2
-  attackTime: 2.5
+  dashAttackRange: 2.5
+  prepareTime: 0.35
+  attackTime: 0.5
   dashInertia: 0.3
   dashPrepareDistance: 0.1
+  damage: 1
 --- !u!114 &6151137152725547955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,9 +162,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.09380627, y: 0.13500452}
+  m_Offset: {x: -0.028285027, y: 0.13500357}
   serializedVersion: 2
-  m_Radius: 5.7995315
+  m_Radius: 5.220463
 --- !u!212 &2475997884231439371
 SpriteRenderer:
   m_ObjectHideFlags: 0

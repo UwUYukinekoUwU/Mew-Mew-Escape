@@ -18,8 +18,8 @@ public class Consumable : MonoBehaviour
         if (collision.gameObject.tag != "Creature" && collision.gameObject.tag != "Player")
             return;
 
-        ConsumeItem creatureConsume = collision.gameObject.GetComponent<ConsumeItem>();
-        if (creatureConsume == null)
+        ConsumeItem creatureConsume;
+        if (!collision.gameObject.TryGetComponent(out creatureConsume))
         {
             Debug.LogError("Can't find ConsumeItem script on creature " + gameObject.name);
             return;

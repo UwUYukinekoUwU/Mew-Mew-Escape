@@ -9,11 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/InitScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/GameplayTest.unity
-    guid: 10a586bc5950b0349a4284a694a81523
+    path: Assets/Scenes/MainMenu.unity
+    guid: 0bbb3114fd0f13a46a0ef4fabee1b866
   - enabled: 1
     path: Assets/Scenes/EntryScene.unity
     guid: a92c40ed0ad84a447b8dafdd20374af5
+  - enabled: 1
+    path: Assets/Scenes/GameplayTest.unity
+    guid: 10a586bc5950b0349a4284a694a81523
   - enabled: 1
     path: Assets/Scenes/bottom_left_turn.unity
     guid: 285ac3f0cbc0d28499f6658ac12bf163
