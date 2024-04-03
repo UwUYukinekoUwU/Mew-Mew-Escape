@@ -11,6 +11,7 @@ public class PlayerConsumeItem : ConsumeItem
 
     [Header("Parameters")]
     [SerializeField] private int fishSecondsAdded = 5;
+    [SerializeField] private int mouseSecondsAdded = 20;
 
 
     public void Awake()
@@ -18,6 +19,7 @@ public class PlayerConsumeItem : ConsumeItem
         foodActions = new Dictionary<Consumables, Action>()
         {
             { Consumables.FISH, EatFish },
+            { Consumables.MOUSE, EatMouse },
         };
     }
 
@@ -25,6 +27,11 @@ public class PlayerConsumeItem : ConsumeItem
     private void EatFish()
     {
         hunger.AddTime(fishSecondsAdded);
+    }
+
+    private void EatMouse()
+    {
+        hunger.AddTime(mouseSecondsAdded);
     }
 
 }

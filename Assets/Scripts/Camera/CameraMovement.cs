@@ -8,7 +8,7 @@ using static GameM;
 public class CameraMovement : MonoBehaviour
 {
     [Header("Parameters")]
-    [SerializeField] private float followOffset = 1;
+    public float FollowOffset = 1f;
     [SerializeField] private float _flipRotationTime = 0.5f;
 
     [Header("References")]
@@ -36,12 +36,12 @@ public class CameraMovement : MonoBehaviour
 
         if (currentHorizontal != 0)
         {
-            followVector.x = Mathf.Sign(currentHorizontal) * followOffset;
+            followVector.x = Mathf.Sign(currentHorizontal) * FollowOffset;
             followVector.y = 0;
         }
         else if (currentVertical != 0)
         {
-            followVector.y = Mathf.Sign(currentVertical) * followOffset;
+            followVector.y = Mathf.Sign(currentVertical) * FollowOffset;
             followVector.x = 0;
         }
         

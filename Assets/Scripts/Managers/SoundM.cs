@@ -7,6 +7,16 @@ public class SoundM : MonoBehaviour
     public static SoundM _Sounds { get; private set; }
     private AudioSource audioSrc;
 
+    public void Play(AudioClip clip)
+    {
+        audioSrc.PlayOneShot(clip);
+    }
+
+    public static void ResetManager()
+    {     
+
+    }
+
     private SoundM() {}
    
     public void Awake()
@@ -18,8 +28,5 @@ public class SoundM : MonoBehaviour
         _Sounds = this;
     }
 
-    public void Play(AudioClip clip)
-    {
-        audioSrc.PlayOneShot(clip);
-    }
+
 }

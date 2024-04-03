@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 7646287408096911713}
   m_Layer: 8
   m_Name: GangCat
-  m_TagString: Untagged
+  m_TagString: Creature
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e6aaad746f00ca48801f77697996b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 5
+  Speed: 6
   _hitbox: {fileID: 3212780301697528860}
 --- !u!114 &7236255675350918608
 MonoBehaviour:
@@ -99,9 +99,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
-  dashAttackRange: 2.5
+  dashAttackRange: 2
   prepareTime: 0.35
-  attackTime: 0.5
+  attackTime: 0.3
   dashInertia: 0.3
   dashPrepareDistance: 0.1
   damage: 1

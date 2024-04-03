@@ -38,7 +38,7 @@ namespace AI
             }
         }
 
-        public void Start()
+        public void Awake()
         {
             _hitbox = GetComponent<BoxCollider2D>();
             LayerMask ignoreBoundsLayer = ~(1 << LayerMask.NameToLayer("Bounds"));
@@ -89,6 +89,7 @@ namespace AI
             RaycastHit2D[] _results = new RaycastHit2D[2];
 
             Vector2 _direction = (destination - _sourcePosition);
+
             if (_hitbox.Cast(_direction, ignoreBoundsFilter, _results, Vector2.Distance(_sourcePosition, destination)) != 0)
             {
                 foreach (RaycastHit2D r in _results)

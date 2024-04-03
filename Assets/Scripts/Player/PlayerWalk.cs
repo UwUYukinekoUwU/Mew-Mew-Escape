@@ -1,22 +1,63 @@
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.UI;
 using static GameM;
 
 public class PlayerWalk : Walk
 {
-    private PlayerAnimationHandler _handler;
+    [SerializeField] private float sprintSpeed = 10f;
+    [SerializeField] private float fullSprintDuration = 10f;
+    [SerializeField] private float newCameraOffset = 2f;
 
+    private PlayerAnimationHandler _handler;
+    private Image _sprintBarImage;
+    private PlayerController _playerController;
+    private CameraMovement _cameraMovement;
+    private float _originalSpeed;
+    private float _originalCameraOffset;
+    private float _sprintEnergy;
 
     public new void Start()
     {
         base.Start();
         _handler = GetComponent<PlayerAnimationHandler>();
+        _cameraMovement = Game.GetComponentByName<CameraMovement>("Main Camera");
+        _sprintBarImage = Game.GetComponentByName<Image>("SprintBar");
+        _playerController = _controller as PlayerController;
+
+        _originalSpeed = Speed;
+        _originalCameraOffset = _cameraMovement.FollowOffset;
+        _sprintEnergy = fullSprintDuration;
     }
 
     public new void Update()
     {
         base.Update();
 
+        if (Game.PlayerBusy)
+            return;
+
+        // sprinting logic
+        if (_playerController.Sprinting() && _sprintEnergy > 0)
+        {
+            _sprintEnergy -= Time.deltaTime;
+            Speed = sprintSpeed;
+            _cameraMovement.FollowOffset = newCameraOffset;
+        }
+        else
+        {
+            if (!_playerController.Sprinting())
+                _sprintEnergy += Time.deltaTime;
+            if (_sprintEnergy > fullSprintDuration)
+                _sprintEnergy = fullSprintDuration;
+
+            Speed = _originalSpeed;
+            _cameraMovement.FollowOffset = _originalCameraOffset;
+        }
+        _sprintBarImage.fillAmount = _sprintEnergy / fullSprintDuration;
+
+
+        // animation
         _handler._RunningSideways = false;
         _handler._RunningUpwards = false;
         _handler._RunningDownwards = false;

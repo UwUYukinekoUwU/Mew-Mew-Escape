@@ -39,7 +39,7 @@ namespace AI
             if (GameM.Game.PlayerBusy)
                 return;
 
-            if (!_stateChecker.IsFollowing)
+            if (!_stateChecker.TargetVisible)
                 return;
 
             if (_attacking)

@@ -14,8 +14,18 @@ public class NextLevelGate : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag != "Player")
+        bool isPlayer = false;
+        foreach(string option in TransformationCheck.TransformOptions)
+        {
+            if (option == collision.gameObject.tag)
+            {
+                isPlayer = true;
+                break;
+            }   
+        }
+        if (!isPlayer && collision.gameObject.tag != "Player")
             return;
+
 
         Debug.Log("Entered exit on " + SceneManager.GetActiveScene().name); 
         if (direction == Direction.TOP)

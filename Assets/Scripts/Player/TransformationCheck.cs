@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class TransformationCheck : MonoBehaviour
 {
-    public bool InRange { get; set; } = false;
+    public static string[] TransformOptions = { "HidingBox", "Skateboard" };
 
+    public bool InRange { get; set; } = false;
 
     private GameObject closestTransform;
     private Transform player;
-    private PlayerWalk playerWalk;
-    private string[] transformOptions = { "HidingBox", "Skateboard" };
+
     private int currentlyInRange = 0;
 
     public void Start()
     {
         player = GetComponent<Transform>();      
-        playerWalk = GetComponentInParent<PlayerWalk>();
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -67,16 +66,12 @@ public class TransformationCheck : MonoBehaviour
 
     private bool isOption(string tag)
     {
-        bool isOption = false;
-        foreach (string option in transformOptions)
+        foreach (string option in TransformOptions)
         {
             if (tag == option)
-            {
-                isOption = true;
-                break;
-            }
+                return true;
         }
-        return isOption;
+        return false;
     }
 
 

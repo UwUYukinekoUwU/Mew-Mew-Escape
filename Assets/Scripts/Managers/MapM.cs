@@ -29,6 +29,13 @@ public class MapM : MonoBehaviour
         SceneManager.LoadScene(indexedScenes[wantedSceneIndex]);
     }
 
+    public static void ResetManager()
+    {
+        Map.CurrentPosition = new Vector2(1, 0);
+        Map.WantedPosition = new Vector2(1, 0);
+
+        //reset whole map generation later
+    }
     private MapM() { }
 
     public void Awake()

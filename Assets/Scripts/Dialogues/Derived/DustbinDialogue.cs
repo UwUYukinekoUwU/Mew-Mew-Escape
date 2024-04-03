@@ -9,9 +9,11 @@ namespace DialogueSystem
     public class DustbinDialogue : Dialogue
     {
         private Hunger playerHunger;
+        private PlayerHealth playerHealth;
         public void Start()
         {
             playerHunger = Game.GetComponentByName<Hunger>("PlayerHunger");
+            playerHealth = Game.GetComponentByName<PlayerHealth>("Player");
         }
 
         public new void OnEnable()
@@ -57,12 +59,24 @@ namespace DialogueSystem
 
         private void EatFromDustbin()
         {
+            int chance = Random.Range(0, 2);
+
             _lines.Clear();
             DialogueParameters p = _parameters.Instance();
             p.hideDialogue = true;
-            _lines.Add(WriteText("*You found wonders", p.Instance()));
+
+            if (chance == 0)
+            {
+                _lines.Add(WriteText("*You found wonders", p.Instance()));
+                playerHunger.AddTime(float.MaxValue);
+            }
+            else
+            {
+                _lines.Add(WriteText("*Something didn't taste well", p.Instance()));
+                playerHealth.DoDamage(1);
+            }
+            
             StartTalking();
-            playerHunger.AddTime(float.MaxValue);
         }
 
         private void DontEatFromDustbin()
@@ -70,7 +84,7 @@ namespace DialogueSystem
             _lines.Clear();
             DialogueParameters p = _parameters.Instance();
             p.hideDialogue = true;
-            _lines.Add(WriteText("*You decided not to eat from a dustbin", p.Instance()));
+            _lines.Add(WriteText("*You're not that hungry yet", p.Instance()));
             StartTalking();
         }
     }

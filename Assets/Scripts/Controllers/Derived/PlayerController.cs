@@ -27,7 +27,10 @@ public class PlayerController : InputController
     {
         return Input.GetKeyDown(KeyCode.C);
     }
-
+    public bool Sprinting()
+    {
+        return Input.GetKey(KeyCode.Space);
+    }
     public bool Escape()
     {
         return Input.GetKeyDown(KeyCode.Escape);

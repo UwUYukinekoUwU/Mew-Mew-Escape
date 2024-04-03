@@ -38,7 +38,7 @@ namespace AI
         public void FixedUpdate()
         {
             Vector2 currentPosition = transform.position;
-            //Debug.DrawLine(transform.position, currentTarget[0], Color.blue);
+            Debug.DrawLine(transform.position, currentTarget[0], Color.blue);
 
             if (navigation.DestinationReached(currentTarget.Last()))
             {
@@ -88,7 +88,7 @@ namespace AI
             _controller.VerticalInput = _input.y;
 
 
-            //Debug.DrawLine(transform.position, currentTarget.Last(), Color.magenta);
+            Debug.DrawLine(transform.position, currentTarget.Last(), Color.magenta);
         }
 
 
@@ -123,7 +123,7 @@ namespace AI
 
         public virtual void LoseTargetFollow()
         {
-            stateChecker.IsFollowing = false;
+            stateChecker.TargetVisible = false;
             currentTarget[0] = stationPoint.position;
             lastSeenTimer = 0;
         }

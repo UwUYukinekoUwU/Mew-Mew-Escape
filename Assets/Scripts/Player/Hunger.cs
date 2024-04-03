@@ -5,11 +5,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static GameM;
+using static SoundM;
 
 public class Hunger : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Image hungerLevelImage;
+    [SerializeField] private AudioClip fillHungerSound;
 
     [Header("Parameters")]
     [SerializeField] private int secondsToDeath = 1500;
@@ -43,6 +45,8 @@ public class Hunger : MonoBehaviour
         timer += addedSeconds;
         if (timer > secondsToDeath)
             timer = secondsToDeath;
+
+        _Sounds.Play(fillHungerSound);
     }
     private void DieFromHunger()    
     {

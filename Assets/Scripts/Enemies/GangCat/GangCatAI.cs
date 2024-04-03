@@ -34,7 +34,7 @@ namespace AI
         public new void FixedUpdate()
         {
             walk.Speed = originalWalkSpeed;
-            if (stateChecker.IsFollowing)
+            if (stateChecker.TargetVisible)
             {
                 InIdlePlace = false;
                 idleDestinationDecided = false;
