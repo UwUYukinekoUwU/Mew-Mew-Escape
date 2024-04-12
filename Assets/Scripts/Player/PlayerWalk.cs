@@ -35,10 +35,10 @@ public class PlayerWalk : Walk
 
     public new void Update()
     {
-        base.Update();
-
         if (Game.PlayerBusy)
             return;
+
+        base.Update();
 
         // sprinting logic
         if (_playerController.Sprinting() && _sprintEnergy > 0)
