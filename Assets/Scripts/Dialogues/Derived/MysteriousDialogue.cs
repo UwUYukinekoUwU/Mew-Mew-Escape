@@ -9,6 +9,9 @@ using static GameM;
 
 namespace DialogueSystem
 {
+    /// <summary>
+    /// A dialogue for the black box NPC. Naturally, it's a child of the Dialogue class.
+    /// </summary>
     public class MysteriousDialogue : Dialogue
     {
         private BoxCollider2D _collider;
@@ -116,7 +119,7 @@ namespace DialogueSystem
             int i = 0;
             while (i < 30000)
             {
-                transform.Translate(new Vector2(0, 1));
+                transform.Translate(new Vector2(0, 20) * Time.deltaTime);
                 i++;
                 yield return null;
             }

@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles Skate Animations.
+/// </summary>
 public class SkateAnimationHandler : MonoBehaviour
 {
     private Animator _anim;

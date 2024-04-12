@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 namespace DialogueSystem
 {
+    /// <summary>
+    /// Responsible for dialogue choices selection, updates the canvas and keeps track of which choice is currently selected.
+    /// </summary>
     public class Choices : MonoBehaviour
     {
         [SerializeField] private Image choicesImage;
@@ -75,6 +78,10 @@ namespace DialogueSystem
             }
         }
 
+        /// <summary>
+        /// Updates the font style and glow to match the currently selected choice
+        /// </summary>
+        /// <param name="id">index of the newly selected choice</param>
         private void ChangeSelected(int id)
         {
             selected.fontStyle = FontStyles.Normal;

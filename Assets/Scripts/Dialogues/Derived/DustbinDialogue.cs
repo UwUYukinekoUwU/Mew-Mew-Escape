@@ -6,6 +6,9 @@ using static GameM;
 
 namespace DialogueSystem
 {
+    /// <summary>
+    /// A dialogue for the Dustbin NPC. Naturally, it's a child of the Dialogue class.
+    /// </summary>
     public class DustbinDialogue : Dialogue
     {
         private Hunger playerHunger;

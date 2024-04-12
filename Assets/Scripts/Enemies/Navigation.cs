@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace AI
 {
+    /// <summary>
+    /// Contains methods for detecting obstacles between points and finding alternative paths.
+    /// </summary>
     public class Navigation : MonoBehaviour
     {
         [SerializeField] private int searchGridSize = 5;
@@ -48,6 +51,9 @@ namespace AI
             ignoreBoundsFilter.SetLayerMask(ignoreBoundsLayer);
         }
 
+        /// <summary>
+        /// Finds and returns a midpoint between this transform and a destination. From this midpoint, the destination is reachable.
+        /// </summary>
         public Vector2? FindMidPoint(Vector2 destination)
         {
             Vector2 closestPoint = Vector2.positiveInfinity;
@@ -71,20 +77,31 @@ namespace AI
             return null;
         }
 
-
-        public bool CanGoToPoint(Vector2 destination, Vector2? sourcePosition=null)
+        /// <summary>
+        /// Checks if a destination is reachable from a startPosition. If startPosition is null, it's set to transform.position.
+        /// </summary>
+        /// <param name="destination">The destination to reach</param>
+        /// <param name="startPosition">Position from which to check. transform.position is default.</param>
+        public bool CanGoToPoint(Vector2 destination, Vector2? startPosition=null)
         {
-            if (GetContactPoint(destination, sourcePosition) == null) 
+            if (GetContactPoint(destination, startPosition) == null) 
                 return true;
 
             return false;
         }
 
-        public Vector2? GetContactPoint(Vector2 destination, Vector2? sourcePosition=null)
+        /// <summary>
+        /// Casts this hitbox from startPosition to destination, and if it can reach, returns null. 
+        /// Otherwise it will return the point of contact.
+        /// </summary>
+        /// <param name="destination">The destination to reach</param>
+        /// <param name="startPosition">Position from which to check. transform.position is default.</param>
+        /// <returns></returns>
+        public Vector2? GetContactPoint(Vector2 destination, Vector2? startPosition=null)
         {
-            if (sourcePosition == null)
-                sourcePosition = transform.position;
-            Vector2 _sourcePosition = (Vector2)sourcePosition;
+            if (startPosition == null)
+                startPosition = transform.position;
+            Vector2 _sourcePosition = (Vector2)startPosition;
 
             RaycastHit2D[] _results = new RaycastHit2D[2];
 
@@ -102,7 +119,10 @@ namespace AI
             return null;
         }
 
-
+        /// <summary>
+        /// Checks if a destination was reached. Has some tolerance, to eliminate glitches.
+        /// </summary>
+        /// <param name="destination">Destination to check</param>
         public bool DestinationReached(Vector2 destination)
         {
             Vector2 thisPosition = transform.position;
@@ -113,6 +133,9 @@ namespace AI
             return false;
         }
 
+        /// <summary>
+        /// Returns a list of points on the navigation grid that this transform can reach.
+        /// </summary>
         public List<Vector2> VisiblePoints()
         {
             List<Vector2> possiblePoints = new List<Vector2>(searchGridSize * searchGridSize);

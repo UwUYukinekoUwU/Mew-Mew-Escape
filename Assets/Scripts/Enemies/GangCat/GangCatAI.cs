@@ -6,6 +6,9 @@ using UnityEngine.PlayerLoop;
 
 namespace AI
 {
+    /// <summary>
+    /// Child of the AIBrain class. Responsible for GangCat (black cat) behaviour.
+    /// </summary>
     public class GangCatAI : AIBrain
     {
         [SerializeField] private Transform _Player;
@@ -16,6 +19,7 @@ namespace AI
 
 
         private Walk walk;
+        private GangCatAnimationHandler _animation;
         private float originalWalkSpeed;
         private List<Vector2> idlePoints = new List<Vector2>();
         private Vector2 randomIdlePoint = Vector2.zero;
@@ -28,6 +32,7 @@ namespace AI
             base.Start();
             idlePoints = navigation.VisiblePoints();
             walk = GetComponent<Walk>();
+            _animation = GetComponent<GangCatAnimationHandler>();
             originalWalkSpeed = walk.Speed;
         }
 
@@ -61,8 +66,13 @@ namespace AI
             }
 
             base.FixedUpdate();
+
+            AnimationUpdate();
         }
 
+        /// <summary>
+        /// Every 8 seconds chooses a random destination to go to.
+        /// </summary>
         private void IdleLogic()
         {
             walk.Speed = idleSpeed;
@@ -79,6 +89,10 @@ namespace AI
             FollowTarget(randomIdlePoint, "");
         }
 
+        /// <summary>
+        /// Returns a random point on the navigation grid.
+        /// </summary>
+        /// <returns></returns>
         private Vector2 GetRandomDestination()
         {
             return idlePoints[Random.Range(0, idlePoints.Count)];
@@ -90,6 +104,25 @@ namespace AI
             invokedChange = false;
         }
 
+        /// <summary>
+        /// Updates values of GangCatAnimationHandler so animations match current movement.
+        /// </summary>
+        private void AnimationUpdate()
+        {
+            _animation._RunningSideways = false;
+            _animation._RunningUpwards = false;
+            _animation._RunningDownwards = false;
+
+            if (_controller.VerticalInput == 0 && _controller.HorizontalInput == 0)
+                return;
+
+            if (Mathf.Abs(_controller.HorizontalInput) > Mathf.Abs(_controller.VerticalInput))
+                _animation._RunningSideways = true;
+            else if (_controller.VerticalInput < 0)
+                _animation._RunningDownwards = true;
+            else
+                _animation._RunningUpwards = true;
+        }
     }
 
 }

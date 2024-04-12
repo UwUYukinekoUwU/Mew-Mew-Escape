@@ -4,8 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using static MapM;
 
+/// <summary>
+/// If something enters its trigger range, update MapM.WantedPosition accordingly and load the next scene this gate leads into.
+/// </summary>
 public class NextLevelGate : MonoBehaviour
 {
+    /// <summary>
+    /// The 4 directions a gate can lead to.
+    /// </summary>
     public enum Direction
     {
         TOP, BOTTOM, LEFT, RIGHT

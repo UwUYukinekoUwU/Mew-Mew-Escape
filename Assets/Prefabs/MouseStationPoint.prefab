@@ -65,7 +65,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6549563000507946328}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 3.929456}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d22948e43f881c49b4828715b62465c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 11400000, guid: 8fe87c1d792b75248aca1e4f3fbff28b, type: 2}
+  input: {fileID: 11400000, guid: 659fcf05fb0aaba408279c84d72dde40, type: 2}
 --- !u!61 &6019406156816231584
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -175,7 +175,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0042123795, y: 0.1221205}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -186,7 +186,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.6378498, y: 0.63785005}
   m_EdgeRadius: 0
 --- !u!58 &1806331615845801744
 CircleCollider2D:
@@ -264,7 +264,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 378eed3f13c9c484a8eb8021f591ab0c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -380,7 +380,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0020933151, y: -0.0062817335}
+  m_Offset: {x: -0.004262924, y: 0.12453616}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -391,5 +391,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3559589, y: 1.3810861}
+  m_Size: {x: 0.75832367, y: 0.7532985}
   m_EdgeRadius: 0

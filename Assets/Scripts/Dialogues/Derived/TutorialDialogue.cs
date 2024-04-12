@@ -7,6 +7,9 @@ using UnityEngine;
 
 namespace DialogueSystem
 {
+    /// <summary>
+    /// A dialogue for the Sage (white) Cat NPC. Naturally, it's a child of the Dialogue class.
+    /// </summary>
     public class TutorialDialogue : Dialogue
     {
         private bool tutorialFinished = false;

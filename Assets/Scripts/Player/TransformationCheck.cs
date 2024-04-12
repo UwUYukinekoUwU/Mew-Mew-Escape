@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// For checking if there are transform options in trigger range.
+/// </summary>
 public class TransformationCheck : MonoBehaviour
 {
     public static string[] TransformOptions = { "HidingBox", "Skateboard" };
@@ -57,13 +60,17 @@ public class TransformationCheck : MonoBehaviour
 
     }
 
-
+    /// <summary>
+    /// Returns the closest transformation item.
+    /// </summary>
     public GameObject GetClosestTransform()
     {
         return closestTransform;
     }
 
-
+    /// <summary>
+    /// Checks if this tag is a transformation option or not.
+    /// </summary>
     private bool isOption(string tag)
     {
         foreach (string option in TransformOptions)

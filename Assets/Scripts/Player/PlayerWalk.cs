@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using static GameM;
 
+/// <summary>
+/// Child of the Walk class. Responsible for player's animation and sprint logic.
+/// </summary>
 public class PlayerWalk : Walk
 {
     [SerializeField] private float sprintSpeed = 10f;
@@ -71,6 +74,10 @@ public class PlayerWalk : Walk
             _handler._RunningSideways = true;
     }
 
+    /// <summary>
+    /// Disable player's movement for a while.
+    /// </summary>
+    /// <param name="duration">duration of the stun in seconds</param>
     public void Stun(float duration)
     {
         //add some starry animation here mb

@@ -7,6 +7,9 @@ using UnityEngine.UI;
 using static GameM;
 using static SoundM;
 
+/// <summary>
+/// Class to track the player's hunger level.
+/// </summary>
 public class Hunger : MonoBehaviour
 {
     [Header("References")]
@@ -40,6 +43,10 @@ public class Hunger : MonoBehaviour
         hungerLevelImage.fillAmount = hungerLevel + imageFillOffset;
     }
 
+    /// <summary>
+    /// Adds seconds to player's hunger level.
+    /// </summary>
+    /// <param name="addedSeconds">Seconds to add.</param>
     public void AddTime(float addedSeconds)
     {
         timer += addedSeconds;
@@ -48,6 +55,10 @@ public class Hunger : MonoBehaviour
 
         _Sounds.Play(fillHungerSound);
     }
+
+    /// <summary>
+    /// Performs a dying animation and then calls GameM.LoseGame()
+    /// </summary>
     private void DieFromHunger()    
     {
         //TODO animation

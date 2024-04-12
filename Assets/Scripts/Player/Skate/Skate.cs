@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using static GameM;
 
+/// <summary>
+/// Child of the Walk class. Responsible for custom movement logic when skating.
+/// </summary>
 public class Skate : Walk
 {
     [Header("References")]
@@ -90,7 +93,6 @@ public class Skate : Walk
             _skateboardCollider.size = horizontalColliderSize;
         }
 
-        //move
         Move();
     }
 

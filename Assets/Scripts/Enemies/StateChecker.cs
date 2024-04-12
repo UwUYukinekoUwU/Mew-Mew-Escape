@@ -6,6 +6,9 @@ using TMPro;
 
 namespace AI
 {
+    /// <summary>
+    /// Checks if something entered this creature's line of sight.
+    /// </summary>
     public class StateChecker : MonoBehaviour
     {
         public bool TargetVisible { get; set; }
@@ -109,7 +112,9 @@ namespace AI
             return false;
         }
 
-
+        /// <summary>
+        /// Checks if this tag should be reacted to or not
+        /// </summary>
         private bool IsSearchedTag(string tag)
         {
             foreach (string t in SearchedTags)

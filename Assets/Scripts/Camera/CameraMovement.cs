@@ -4,7 +4,9 @@ using UnityEngine;
 using Cinemachine;
 using static GameM;
 
-
+/// <summary>
+/// Camera moves using cinemachine, but this ensures a smooth transition of the tracked object offset.
+/// </summary>
 public class CameraMovement : MonoBehaviour
 {
     [Header("Parameters")]
@@ -55,7 +57,12 @@ public class CameraMovement : MonoBehaviour
         currentVector = followVector;
     }
 
-
+    /// <summary>
+    /// Camera is always facing a bit in front of the player, and tracked object offset property is responsible for that.
+    /// Once we rotate our player though, don't want the tracked object offset to snap along, so it smoothly transitions to its new
+    /// position, using Mathf.Lerp (just a simple linear interpolation).
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator ChangeFollowPoint()
     {
         Vector2 startPoint = _cinemachineTransposer.m_TrackedObjectOffset;

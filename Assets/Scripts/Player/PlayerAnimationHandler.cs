@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using static GameM;
 
+/// <summary>
+/// Responsible for animating the player.
+/// </summary>
 public class PlayerAnimationHandler : MonoBehaviour
 {
     private Animator _anim;

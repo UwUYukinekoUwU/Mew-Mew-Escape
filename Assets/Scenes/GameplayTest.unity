@@ -1893,10 +1893,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3164528848349455313, guid: c9f1b5b6352bab040bb26d8dd36b4e45, type: 3}
-      propertyPath: input
-      value: 
-      objectReference: {fileID: 11400000, guid: 659fcf05fb0aaba408279c84d72dde40, type: 2}
     - target: {fileID: 3237133769996684875, guid: c9f1b5b6352bab040bb26d8dd36b4e45, type: 3}
       propertyPath: m_Name
       value: MouseStationPoint

@@ -8,6 +8,9 @@ using UnityEngine.SceneManagement;
 
 namespace DialogueSystem
 {
+    /// <summary>
+    /// A dialogue for the yellow box NPC. Naturally, it's a child of the Dialogue class.
+    /// </summary>
     public class NpcDialogue : Dialogue
     {
         public new void Awake()

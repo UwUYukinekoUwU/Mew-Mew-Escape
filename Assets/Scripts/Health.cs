@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Base class for all Health trackers. 
+/// </summary>
 public class Health : MonoBehaviour
 {
     public int Lives = 9;
@@ -50,6 +53,9 @@ public class Health : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Subtracts damage from current hitpoints. Can't do damage to an object that was damaged recently.
+    /// </summary>
     public virtual void DoDamage(int damage)
     {
         if (_hurting)
@@ -74,12 +80,11 @@ public class Health : MonoBehaviour
     protected virtual void HurtAnimation()
     {
         _spriteRenderer.color = Color.red;
-        //IEnumerator WhiteRedFlicker()
-        //{
-        //    while ()
-        //}
     }
 
+    /// <summary>
+    /// Called when the scene changes, resets Physics2D collision matrix back to original.
+    /// </summary>
     private void ChangedActiveScene(Scene current, Scene next)
     {
         if (Physics2D.GetLayerCollisionMask(thisLayer) == _originalLayermask)

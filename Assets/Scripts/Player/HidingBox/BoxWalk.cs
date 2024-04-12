@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Child of the Walk class. Handles custom logic and animations for HidingBox.
+/// </summary>
 public class BoxWalk : Walk
 {
     private BoxAnimationHandler _handler;

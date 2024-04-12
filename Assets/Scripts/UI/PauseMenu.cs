@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using static GameM;
 
+/// <summary>
+/// Class containing methods used by Pause Menu buttons.
+/// </summary>
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] PlayerController playerController;
@@ -18,6 +21,9 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Pauses the game.
+    /// </summary>
     public void Pause()
     {
         Game.Paused = true;
@@ -25,6 +31,10 @@ public class PauseMenu : MonoBehaviour
         Game.PlayerBusy = true;
     }
 
+    /// <summary>
+    /// Unpauses the game. This could be in one method together with Pause(), 
+    /// but the buttons need to have a function assigned to them.
+    /// </summary>
     public void Unpause()
     {
         Game.Paused = false;
@@ -32,7 +42,9 @@ public class PauseMenu : MonoBehaviour
         Game.PlayerBusy = false;
     }
 
-
+    /// <summary>
+    /// Exits the game.
+    /// </summary>
     public void ExitGame()
     {
         Application.Quit();

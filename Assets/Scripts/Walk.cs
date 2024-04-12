@@ -40,7 +40,6 @@ public class Walk : MonoBehaviour
                 transform.localScale.z
             );
 
-
         Move();
     }
 

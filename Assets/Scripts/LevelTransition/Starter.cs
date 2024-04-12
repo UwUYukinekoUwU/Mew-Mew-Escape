@@ -5,6 +5,9 @@ using static MapM;
 using static GameM;
 using Cinemachine;
 
+/// <summary>
+/// Class responsible for positioning the player next to the right level entrance.
+/// </summary>
 public class Starter : MonoBehaviour
 {
     [Header("Entrance links")]
@@ -19,7 +22,9 @@ public class Starter : MonoBehaviour
         PositionPlayer();
     }
 
-
+    /// <summary>
+    /// Positions the player next to the right entrance
+    /// </summary>
     private void PositionPlayer()
     {
         Transform _Player = Game.GetComponentByName<Transform>("Player");

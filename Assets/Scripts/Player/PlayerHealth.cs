@@ -5,6 +5,9 @@ using UnityEngine;
 using static GameM;
 using static SoundM;
 
+/// <summary>
+/// Child of the Health class. Sets custom damage effects and calls GameM.LoseGame() if HP drops to zero.
+/// </summary>
 public class PlayerHealth : Health
 {
     [SerializeField] private AudioClip mewTakeDmg;
@@ -26,6 +29,9 @@ public class PlayerHealth : Health
         Game.Lives = Lives;
     }
 
+    /// <summary>
+    /// Calls Health.DoDamage and if HP dropped to zero, calls GameM.LoseGame(). Plays a custom sound.
+    /// </summary>
     public override void DoDamage(int damage)
     {
         base.DoDamage(damage);
@@ -35,6 +41,9 @@ public class PlayerHealth : Health
         _Sounds.Play(mewTakeDmg);
     }
 
+    /// <summary>
+    /// Plays death animation and calls GameM.LoseGame()
+    /// </summary>
     protected override void GetKilled()
     {
         //death animation mb?

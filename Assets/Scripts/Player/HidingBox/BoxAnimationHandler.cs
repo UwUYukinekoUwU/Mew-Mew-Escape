@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles animations for HidingBox
+/// </summary>
 public class BoxAnimationHandler : MonoBehaviour
 {
     private Animator _anim;

@@ -6,6 +6,9 @@ using static GameM;
 
 namespace DialogueSystem
 {
+    /// <summary>
+    /// Checks if player entered the talking range, and once they interact, starts the dialogue script on this object.
+    /// </summary>
     [RequireComponent (typeof(Dialogue))]
     public class TalkingRange : MonoBehaviour
     {
@@ -55,6 +58,10 @@ namespace DialogueSystem
             //stop the animation
             enabled = false;
         }
+
+        /// <summary>
+        /// Enables the talking range again
+        /// </summary>
         public void ReEnableTalkingRange()
         {   
             talkingRange.enabled = true;

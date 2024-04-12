@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using static GameM;
 
+/// <summary>
+/// Custom logic for HidingBox.
+/// </summary>
 public class HidingBox : MonoBehaviour
 {
     public float Duration = 15.0f;

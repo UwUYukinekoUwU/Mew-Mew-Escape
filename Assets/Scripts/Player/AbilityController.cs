@@ -5,6 +5,9 @@ using System.Globalization;
 using UnityEngine;
 using static GameM;
 
+/// <summary>
+/// Listens for input, and if a transformation option is in range, it will transform the creature into it.
+/// </summary>
 public class AbilityController : MonoBehaviour
 {
     private TransformationCheck transformItem;
@@ -39,7 +42,9 @@ public class AbilityController : MonoBehaviour
         interacting = false;
     }
 
-
+    /// <summary>
+    /// Disable this object and activate the hiding box.
+    /// </summary>
     private void BoxTransform()
     {
         gameObject.SetActive(false);
@@ -48,7 +53,9 @@ public class AbilityController : MonoBehaviour
         transformItem.GetClosestTransform().GetComponent<HidingBox>().enabled = true;
     }
 
-
+    /// <summary>
+    /// Disable this object and activate the skateboard.
+    /// </summary>
     private void SkateTransform()
     {
         gameObject.SetActive(false);

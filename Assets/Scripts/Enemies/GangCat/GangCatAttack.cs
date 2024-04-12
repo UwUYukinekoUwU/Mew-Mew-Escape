@@ -69,7 +69,9 @@ namespace AI
                 _targetHealth.DoDamage(damage);
         }
 
-
+        /// <summary>
+        /// First move a bit backwards slowly, then launch at target, with a bit of inertia.
+        /// </summary>
         private IEnumerator DashAttack()
         {
             Vector2 currentPosition = transform.position;
@@ -102,6 +104,10 @@ namespace AI
             _attacking = false;
         }
 
+        /// <summary>
+        /// Moves this transform from startPoint to endPoint in time t, just like Mathf.Lerp, but it's necessary to do this
+        /// outside the Update() method.
+        /// </summary>
         private IEnumerator TransformByLerp(Vector2 startPoint, Vector2 endPoint, float _time)
         {
             Vector2 moveVector;
