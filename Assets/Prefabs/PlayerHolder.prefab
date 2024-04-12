@@ -79,7 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hungerLevelImage: {fileID: 0}
   fillHungerSound: {fileID: 8300000, guid: 23bdfbad43386174e9bb1c123b504b5b, type: 3}
-  secondsToDeath: 1000
+  secondsToDeath: 200
 --- !u!1 &7217681476442839629
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,8 +282,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hunger: {fileID: 8575068132093583173}
-  fishSecondsAdded: 5
-  mouseSecondsAdded: 20
+  fishSecondsAdded: 20
+  mouseSecondsAdded: 50
 --- !u!114 &2545012464357116586
 MonoBehaviour:
   m_ObjectHideFlags: 0
