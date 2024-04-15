@@ -54,26 +54,28 @@ public class Walk : MonoBehaviour
         //dont want the player to move faster diagonally
         moveVector = moveVector.normalized;
 
+        float offset = 0.007f;
+
         //check x 
         _direction = new Vector2(moveVector.x, 0);
-        if (_hitbox.Cast(_direction, triggerCollidersFilter, _results, Speed * Time.deltaTime + 0.01f) != 0)
+        if (_hitbox.Cast(_direction, triggerCollidersFilter, _results, Speed * Time.deltaTime + 0.1f * Speed) != 0)
         {
             foreach (RaycastHit2D r in _results)
             {
                 if (r == false) break;
-                moveVector.x = Mathf.Sign(moveVector.x) * (r.distance - 0.01f);
+                moveVector.x = Mathf.Sign(moveVector.x) * (r.distance - offset);
                 break;
             }
         }
 
         //check y
         _direction = new Vector2(0, moveVector.y);
-        if (_hitbox.Cast(_direction, triggerCollidersFilter, _results, Speed * Time.deltaTime + 0.01f) != 0)
+        if (_hitbox.Cast(_direction, triggerCollidersFilter, _results, Speed * Time.deltaTime + 0.1f * Speed) != 0)
         {
             foreach (RaycastHit2D r in _results)
             {
                 if (r == false) break;
-                moveVector.y = Mathf.Sign(moveVector.y) * (r.distance - 0.01f);
+                moveVector.y = Mathf.Sign(moveVector.y) * (r.distance - offset);
                 break;
             }
         }

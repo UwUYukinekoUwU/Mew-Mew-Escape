@@ -36,6 +36,8 @@ public class Skate : Walk
         _skateAnimationHandler._InactiveSkateboard = false;
         _skateboardCollider = GetComponent<BoxCollider2D>();
         _playerWalk = _player.GetComponent<PlayerWalk>();
+        Rigidbody2D _rb = GetComponent<Rigidbody2D>();
+        _rb.constraints &= ~RigidbodyConstraints2D.FreezePosition;
 
         mainCamera = Game.GetComponentByName<CinemachineVirtualCamera>("Virtual Camera");
         mainCamera.Follow = GetComponent<Transform>();

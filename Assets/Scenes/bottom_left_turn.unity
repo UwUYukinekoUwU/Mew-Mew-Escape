@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 10
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -44,7 +44,6 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 12
-  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -67,9 +66,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 0
@@ -192,6 +188,7 @@ PolygonCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 612646252}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -215,7 +212,8 @@ PolygonCollider2D:
     m_Bits: 0
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,10 +226,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 17.62247, y: 10.806041}
+    - - {x: 18.222412, y: 12.205911}
       - {x: -1.4465137, y: 12.441164}
       - {x: -16.236721, y: 12.440811}
-      - {x: -20.175922, y: 11.782889}
+      - {x: -20.89288, y: 12.34891}
       - {x: -20.932102, y: 4.4034457}
       - {x: -20.886585, y: -9.070231}
       - {x: 18.483955, y: -8.850442}
@@ -292,6 +290,7 @@ BoxCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 739692455}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -315,7 +314,8 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: -3.3654823, y: -3.9403353}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -326,7 +326,6 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
   m_Size: {x: 10.645477, y: 0.2874403}
   m_EdgeRadius: 0
 --- !u!114 &739692458
@@ -489,6 +488,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -734,6 +735,7 @@ BoxCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1568311344}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -757,7 +759,8 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: -6.2814274, y: 4.0884676}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -768,7 +771,6 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
   m_Size: {x: 0.5529213, y: 8.128103}
   m_EdgeRadius: 0
 --- !u!114 &1568311347
@@ -973,6 +975,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: MapBounds
       objectReference: {fileID: 0}
+    - target: {fileID: 4302421163161734465, guid: 0dfba0017ff6bfa4ba1583f2cfba3f65, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4895207675453207135, guid: 0dfba0017ff6bfa4ba1583f2cfba3f65, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7145717175154354085, guid: 0dfba0017ff6bfa4ba1583f2cfba3f65, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865928069042035018, guid: 0dfba0017ff6bfa4ba1583f2cfba3f65, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.06
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1055,19 +1073,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1040308414}
     - target: {fileID: 7332866887439099272, guid: 57cba34fa90aa714e9e3d4d52dddd505, type: 3}
-      propertyPath: choiceHolders.Array.data[0]
+      propertyPath: 'choiceHolders.Array.data[0]'
       value: 
       objectReference: {fileID: 45965474}
     - target: {fileID: 7332866887439099272, guid: 57cba34fa90aa714e9e3d4d52dddd505, type: 3}
-      propertyPath: choiceHolders.Array.data[1]
+      propertyPath: 'choiceHolders.Array.data[1]'
       value: 
       objectReference: {fileID: 834585612}
     - target: {fileID: 7332866887439099272, guid: 57cba34fa90aa714e9e3d4d52dddd505, type: 3}
-      propertyPath: choiceHolders.Array.data[2]
+      propertyPath: 'choiceHolders.Array.data[2]'
       value: 
       objectReference: {fileID: 1396288386}
     - target: {fileID: 7332866887439099272, guid: 57cba34fa90aa714e9e3d4d52dddd505, type: 3}
-      propertyPath: choiceHolders.Array.data[3]
+      propertyPath: 'choiceHolders.Array.data[3]'
       value: 
       objectReference: {fileID: 25669861}
     m_RemovedComponents: []
