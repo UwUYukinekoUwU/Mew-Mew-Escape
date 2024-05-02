@@ -72,6 +72,7 @@ public class Health : MonoBehaviour
 
     protected virtual void GetKilled()
     {
+        //dying animation?
         //Debug.Log("killed " + gameObject.name);
         Destroy(gameObject);
     }

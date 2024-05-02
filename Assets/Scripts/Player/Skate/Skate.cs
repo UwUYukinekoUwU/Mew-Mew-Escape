@@ -14,9 +14,11 @@ public class Skate : Walk
 
     [Header("Parameters")]
     [SerializeField] private float stunDuration = 3f;
+    [SerializeField] private int damage = 1;
 
     private PlayerController _playerController;
     private PlayerWalk _playerWalk;
+    private PlayerHealth _playerHealth;
     private SkateAnimationHandler _skateAnimationHandler;
     private BoxCollider2D _skateboardCollider;
     private CinemachineVirtualCamera mainCamera;
@@ -36,6 +38,7 @@ public class Skate : Walk
         _skateAnimationHandler._InactiveSkateboard = false;
         _skateboardCollider = GetComponent<BoxCollider2D>();
         _playerWalk = _player.GetComponent<PlayerWalk>();
+        _playerHealth = _player.GetComponent<PlayerHealth>();
         Rigidbody2D _rb = GetComponent<Rigidbody2D>();
         _rb.constraints &= ~RigidbodyConstraints2D.FreezePosition;
 
@@ -102,6 +105,15 @@ public class Skate : Walk
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (!enabled) return;
+
+        Health _targetHealth;
+
+        if (collision.gameObject.TryGetComponent(out _targetHealth))
+        {
+            _targetHealth.DoDamage(damage);
+            _playerHealth.DoDamage(damage);
+        }
+
 
         Destroy(gameObject);
         _player.transform.position = gameObject.transform.position;
