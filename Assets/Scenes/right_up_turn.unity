@@ -469,6 +469,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: MapBounds
       objectReference: {fileID: 0}
+    - target: {fileID: 3624600862071451958, guid: 0dfba0017ff6bfa4ba1583f2cfba3f65, type: 3}
+      propertyPath: m_Size.x
+      value: 38.65814
+      objectReference: {fileID: 0}
+    - target: {fileID: 3624600862071451958, guid: 0dfba0017ff6bfa4ba1583f2cfba3f65, type: 3}
+      propertyPath: m_Size.y
+      value: 0.38209152
+      objectReference: {fileID: 0}
+    - target: {fileID: 3624600862071451958, guid: 0dfba0017ff6bfa4ba1583f2cfba3f65, type: 3}
+      propertyPath: m_Offset.x
+      value: 13.453409
+      objectReference: {fileID: 0}
+    - target: {fileID: 3624600862071451958, guid: 0dfba0017ff6bfa4ba1583f2cfba3f65, type: 3}
+      propertyPath: m_Offset.y
+      value: 15.598774
+      objectReference: {fileID: 0}
     - target: {fileID: 4895207675453207135, guid: 0dfba0017ff6bfa4ba1583f2cfba3f65, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.1
@@ -479,7 +495,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7865928069042035018, guid: 0dfba0017ff6bfa4ba1583f2cfba3f65, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.73
+      value: -4.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -513,7 +529,7 @@ Transform:
   m_GameObject: {fileID: 739692455}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 14.46, z: 0}
+  m_LocalPosition: {x: 0, y: 11.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -553,7 +569,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -3.3654823, y: -1.5313263}
+  m_Offset: {x: -3.3654823, y: 1.306828}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -563,7 +579,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 10.645477, y: 0.2692604}
+  m_Size: {x: 10.645477, y: 0.29750156}
   m_EdgeRadius: 0
 --- !u!114 &739692458
 MonoBehaviour:

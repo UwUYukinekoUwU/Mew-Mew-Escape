@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static MapM;
+using static GameM;
 
 /// <summary>
 /// If something enters its trigger range, update MapM.WantedPosition accordingly and load the next scene this gate leads into.
@@ -32,16 +33,19 @@ public class NextLevelGate : MonoBehaviour
         if (!isPlayer && collision.gameObject.tag != "Player")
             return;
 
+        Game.SetPlayerTransformationItem(collision.gameObject.tag);
+
 
         Debug.Log("Entered exit on " + SceneManager.GetActiveScene().name); 
         if (direction == Direction.TOP)
             Map.WantedPosition = new Vector2(Map.CurrentPosition.x, Map.CurrentPosition.y + 1);
         if (direction == Direction.BOTTOM)
             Map.WantedPosition = new Vector2(Map.CurrentPosition.x, Map.CurrentPosition.y -1);
-        if (direction == Direction.LEFT) //TODO
+        if (direction == Direction.LEFT)
             Map.WantedPosition = new Vector2(Map.CurrentPosition.x - 1, Map.CurrentPosition.y);
         if (direction == Direction.RIGHT)
             Map.WantedPosition = new Vector2(Map.CurrentPosition.x + 1, Map.CurrentPosition.y);
+
 
         Map.LoadNextScene();
     }

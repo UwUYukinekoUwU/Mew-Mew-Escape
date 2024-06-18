@@ -7,7 +7,7 @@ using static GameM;
 /// <summary>
 /// Child of the Walk class. Responsible for custom movement logic when skating.
 /// </summary>
-public class Skate : Walk
+public class Skate : Walk, ITransformItem
 {
     [Header("References")]
     [SerializeField] private GameObject _player;
@@ -33,6 +33,7 @@ public class Skate : Walk
     public new void Start()
     {
         base.Start();
+
         _playerController = base._controller as PlayerController;
         _skateAnimationHandler = GetComponent<SkateAnimationHandler>();
         _skateAnimationHandler._InactiveSkateboard = false;
@@ -122,5 +123,17 @@ public class Skate : Walk
 
         //stun the player for a while
         _playerWalk.Stun(stunDuration);
+    }
+
+
+    public void GetPlayerReference()
+    {
+        if (_player == null)
+            _player = Game.GetComponentByName<GameObject>("Player");
+    }
+
+    public void EnablePlayer()
+    {
+        _player.SetActive(true);
     }
 }

@@ -18,11 +18,15 @@ public class GameM : MonoBehaviour
     public float HungerTimer { get; set; }
     public int Lives { get; set; }
 
+
+    private string transformationItem = "Player";
+
     /// <summary>
     /// Activates the Lost Game menu, pauses the game on background.
     /// </summary>
-    public void LoseGame()
+    public void LoseGame(string cause = "")
     {
+        //TODO add a message specific for each type of death
         Paused = true;
         PlayerBusy = true;
         GetComponentByName<Canvas>("LostGameCanvas").enabled = true;
@@ -48,6 +52,16 @@ public class GameM : MonoBehaviour
         if (typeof(T) == typeof(GameObject))
             return (T) (object) searchedObject;
         return searchedObject.GetComponent<T>();
+    }
+
+    public void SetPlayerTransformationItem(string itemName)
+    {
+        transformationItem = itemName;
+    }
+
+    public string GetPlayerTransformationItem()
+    {
+        return transformationItem;
     }
 
     /// <summary>

@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static GameM;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 /// <summary>
 /// Custom logic for HidingBox.
 /// </summary>
-public class HidingBox : MonoBehaviour
+public class HidingBox : MonoBehaviour, ITransformItem
 {
     public float Duration = 15.0f;
 
@@ -20,6 +21,9 @@ public class HidingBox : MonoBehaviour
 
     public void Start()
     {
+        if (player == null)
+            player = Game.GetComponentByName<GameObject>("Player");
+
         _controller = GetComponent<Controlls>().input as PlayerController;
         Rigidbody2D _rb = GetComponent<Rigidbody2D>();
         _rb.constraints &= ~RigidbodyConstraints2D.FreezePosition;
@@ -39,5 +43,17 @@ public class HidingBox : MonoBehaviour
             player.SetActive(true);
             mainCamera.Follow = player.transform;
         }
+    }
+
+
+    public void GetPlayerReference()
+    {
+        if (player == null)
+            player = Game.GetComponentByName<GameObject>("Player");
+    }
+
+    public void EnablePlayer()
+    {
+        player.SetActive(true);
     }
 }
