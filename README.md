@@ -1,4 +1,9 @@
 <h1>Mew-Mew-Escape!</h1>
+<p>Sorry to say, I won't be working on this for a while now. School is starting soon, and I just can't keep up with the graphics quality. You're free to use everything from this project ofc (though the code quality could be so much better...).
+</p>
+
+
+
 <p>
   Mew-Mew-Escape! is aiming to be a relaxing game where you play as a cat in a city long abandoned by humans. Head on an adventure, as you find food, friends, but also enemies you'll need to outsmart. Can you find your home in this wide city?
 </p>
