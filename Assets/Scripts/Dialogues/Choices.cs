@@ -14,8 +14,8 @@ namespace DialogueSystem
     {
         [SerializeField] private Image choicesImage;
         [SerializeField] private List<TextMeshProUGUI> choiceHolders;
-        [SerializeField] private PlayerController Player;
 
+        private PlayerController Player;
         private string[] choices;
         private int selectedID;
         private TextMeshProUGUI selected;
@@ -42,6 +42,10 @@ namespace DialogueSystem
         {
             selected = choiceHolders[0];
             selectedID = 0;
+        }
+        public void Start()
+        {
+            Player = Scriptables.SObjects.playerController;
         }
 
         /// <summary>

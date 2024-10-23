@@ -6,6 +6,7 @@ using TMPro;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using static SoundM;
+using System.Security.Cryptography;
 
 namespace DialogueSystem
 {
@@ -18,19 +19,24 @@ namespace DialogueSystem
         [Tooltip("Needed for disabling canvas, it would draw over our dialogues")]
         [SerializeField] private GameObject playerStatsCanvas;
 
-        [SerializeField] private PlayerController Player;
+
         [SerializeField] private Image imageHolder;
         [SerializeField] private TextMeshProUGUI textHolder;
         [SerializeField] private GameObject dialogueBox;
-        [SerializeField] public DialogueParameters _parameters;
+        [SerializeField] private Canvas dialogueCanvas;
+        
 
         [Header("Dialogue settings")]
         [SerializeField] private List<Sprite> characterSprites;
-        [SerializeField] private List<AudioClip> voices;              
+        [SerializeField] private List<AudioClip> voices;
+
+
+        [HideInInspector] public DialogueParameters _parameters;
+        [HideInInspector] public Choices _Choices { get; private set; }
+        private PlayerController Player;
 
         private TalkingRange talkingRange;
         private string dialogueAnswer;
-        public Choices _Choices { get; private set; }
 
         private string desiredText;
         private bool skipped;
@@ -91,8 +97,10 @@ namespace DialogueSystem
         }
         public void Awake()
         {
+            _parameters = Scriptables.SObjects.dialogueParameters;
             talkingRange = GetComponent<TalkingRange>();
-            _Choices = GetComponent<Choices>();
+            _Choices = dialogueCanvas.GetComponent<Choices>();
+            Player = Scriptables.SObjects.playerController;
         }
 
         /// <summary>

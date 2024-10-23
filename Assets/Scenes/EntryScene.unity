@@ -627,8 +627,39 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8108612016821461701, guid: dbdfc14035c55c7439b8c337264af121, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 709288278}
   m_SourcePrefab: {fileID: 100100000, guid: dbdfc14035c55c7439b8c337264af121, type: 3}
+--- !u!1 &709288276 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8108612016821461701, guid: dbdfc14035c55c7439b8c337264af121, type: 3}
+  m_PrefabInstance: {fileID: 709288275}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &709288277 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 47497415715649855, guid: dbdfc14035c55c7439b8c337264af121, type: 3}
+  m_PrefabInstance: {fileID: 709288275}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &709288278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709288276}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3fa973f937ad114ebd6c9d1c03c6af4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choicesImage: {fileID: 1746689373}
+  choiceHolders:
+  - {fileID: 356253203}
+  - {fileID: 1822573049}
+  - {fileID: 1717736368}
+  - {fileID: 1803737864}
 --- !u!1 &713935127 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4997564203958186852, guid: 57cba34fa90aa714e9e3d4d52dddd505, type: 3}
@@ -651,11 +682,12 @@ MonoBehaviour:
   imageHolder: {fileID: 1690438492}
   textHolder: {fileID: 776190633}
   dialogueBox: {fileID: 53450608}
-  _parameters: {fileID: 11400000, guid: 3b83230078d60de4bbf3e9b57c718f52, type: 2}
+  dialogueCanvas: {fileID: 709288277}
   characterSprites:
   - {fileID: 21300000, guid: 5f3b423de8e756e4fbc3d0e5fa43d4f0, type: 3}
   voices:
   - {fileID: 8300000, guid: de79af7506fc6ac43bf2a74e1187c1c0, type: 3}
+  _parameters: {fileID: 11400000, guid: 3b83230078d60de4bbf3e9b57c718f52, type: 2}
 --- !u!114 &776190633 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2777354932588994067, guid: dbdfc14035c55c7439b8c337264af121, type: 3}
@@ -1232,7 +1264,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4997564203958186852, guid: 57cba34fa90aa714e9e3d4d52dddd505, type: 3}
-      insertIndex: 3
+      insertIndex: -1
       addedObject: {fileID: 713935129}
   m_SourcePrefab: {fileID: 100100000, guid: 57cba34fa90aa714e9e3d4d52dddd505, type: 3}
 --- !u!114 &1512705043 stripped
@@ -1586,25 +1618,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 2
---- !u!114 &1691340493649574905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4026676050810236181}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3fa973f937ad114ebd6c9d1c03c6af4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  choicesImage: {fileID: 1746689373}
-  choiceHolders:
-  - {fileID: 356253203}
-  - {fileID: 1822573049}
-  - {fileID: 1717736368}
-  - {fileID: 1803737864}
-  Player: {fileID: 11400000, guid: 19aaabe9fba664a468c1aa6a72b93c26, type: 2}
 --- !u!1001 &2717278898069484112
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1613,6 +1626,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5769958769673938834, guid: cf399c0b694fd5543bcb142a8c5ad87e, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 11400000, guid: 19aaabe9fba664a468c1aa6a72b93c26, type: 2}
+    - target: {fileID: 5769958769673938834, guid: cf399c0b694fd5543bcb142a8c5ad87e, type: 3}
+      propertyPath: dialogueParameters
+      value: 
+      objectReference: {fileID: 11400000, guid: 3b83230078d60de4bbf3e9b57c718f52, type: 2}
     - target: {fileID: 6157886452423821270, guid: cf399c0b694fd5543bcb142a8c5ad87e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.5222392
@@ -1748,7 +1769,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3289778638615355899}
   - component: {fileID: 8451996550983100623}
-  - component: {fileID: 1691340493649574905}
   - component: {fileID: 8451996550983100626}
   - component: {fileID: 6188541676768931656}
   - component: {fileID: 8451996550983100625}
@@ -1964,11 +1984,12 @@ MonoBehaviour:
   imageHolder: {fileID: 1690438492}
   textHolder: {fileID: 776190633}
   dialogueBox: {fileID: 53450608}
-  _parameters: {fileID: 11400000, guid: 3b83230078d60de4bbf3e9b57c718f52, type: 2}
+  dialogueCanvas: {fileID: 709288277}
   characterSprites:
   - {fileID: 21300000, guid: a1ba681bfd7c12647b8eec2ff6d2c8e0, type: 3}
   voices:
   - {fileID: 8300000, guid: de79af7506fc6ac43bf2a74e1187c1c0, type: 3}
+  _parameters: {fileID: 11400000, guid: 3b83230078d60de4bbf3e9b57c718f52, type: 2}
 --- !u!61 &8451996550983100627
 BoxCollider2D:
   m_ObjectHideFlags: 0
